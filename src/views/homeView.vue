@@ -29,78 +29,86 @@
         <PeopleDraw></PeopleDraw>
       </div>
       <div class="content-center">
-        <div class="title"></div>
-        <div class="flow-num">
-          <div>
-            <div class="flow-item">
-              <p class="icon"></p>
-              <div>
-                <p>楼道屏总数</p>
-                <p class="num">35</p>
+        <div class="iframe">
+          <iframe
+            src="https://wmwlsq.gongshu.gov.cn/oa/3D/"
+            frameborder="0"
+          ></iframe>
+        </div>
+        <div>
+          <div class="title"></div>
+          <div class="flow-num">
+            <div>
+              <div class="flow-item">
+                <p class="icon"></p>
+                <div>
+                  <p>楼道屏总数</p>
+                  <p class="num">35</p>
+                </div>
+              </div>
+              <div class="flow-item temp">
+                <p class="icon2"></p>
+                <div>
+                  <p>楼道屏在线数</p>
+                  <p class="num">33</p>
+                </div>
+              </div>
+              <div class="flow-item temp2">
+                <p class="icon3"></p>
+                <div>
+                  <p>楼道屏离线数</p>
+                  <p class="num">2</p>
+                </div>
               </div>
             </div>
-            <div class="flow-item temp">
-              <p class="icon2"></p>
-              <div>
-                <p>楼道屏在线数</p>
-                <p class="num">33</p>
+            <div>
+              <div class="flow-info">
+                <p class="sign"></p>
+                <p class="sign-title">信息公开</p>
+              </div>
+              <div class="flow-info2">
+                <div class="flow-info-item">
+                  <p class="flow-title">
+                    <span class="info-icon"></span>
+                    <span class="info-title">政策实事</span>
+                  </p>
+                  <p class="flow-content">
+                    修订后的《国务院关于经营者集中申报标准的规定》公布
+                  </p>
+                </div>
+              </div>
+              <div class="flow-info2">
+                <div class="flow-info-item">
+                  <p class="flow-title">
+                    <span class="info-icon"></span>
+                    <span class="info-title">社区宣传</span>
+                  </p>
+                  <p class="flow-content">社区防灾减灾日宣传活动方案</p>
+                </div>
+              </div>
+              <div class="flow-info2">
+                <div class="flow-info-item">
+                  <p class="flow-title">
+                    <span class="info-icon"></span>
+                    <span class="info-title">社区公告</span>
+                  </p>
+                  <p class="flow-content">社区专职人员拟录用人员名单</p>
+                </div>
+              </div>
+              <div class="flow-info2">
+                <div class="flow-info-item">
+                  <p class="flow-title">
+                    <span class="info-icon"></span>
+                    <span class="info-title">活动公告</span>
+                  </p>
+                  <p class="flow-content">
+                    活动公告活动公告活动公告活动公告活动公告活动公告活动公告活动公告活动公告
+                  </p>
+                </div>
               </div>
             </div>
-            <div class="flow-item temp2">
-              <p class="icon3"></p>
-              <div>
-                <p>楼道屏离线数</p>
-                <p class="num">2</p>
-              </div>
-            </div>
+            <div></div>
           </div>
-          <div>
-            <div class="flow-info">
-              <p class="sign"></p>
-              <p class="sign-title">信息公开</p>
-            </div>
-            <div class="flow-info2">
-              <div class="flow-info-item">
-                <p class="flow-title">
-                  <span class="info-icon"></span>
-                  <span class="info-title">政策实事</span>
-                </p>
-                <p class="flow-content">
-                  修订后的《国务院关于经营者集中申报标准的规定》公布
-                </p>
-              </div>
-            </div>
-            <div class="flow-info2">
-              <div class="flow-info-item">
-                <p class="flow-title">
-                  <span class="info-icon"></span>
-                  <span class="info-title">社区宣传</span>
-                </p>
-                <p class="flow-content">社区防灾减灾日宣传活动方案</p>
-              </div>
-            </div>
-            <div class="flow-info2">
-              <div class="flow-info-item">
-                <p class="flow-title">
-                  <span class="info-icon"></span>
-                  <span class="info-title">社区公告</span>
-                </p>
-                <p class="flow-content">社区专职人员拟录用人员名单</p>
-              </div>
-            </div>
-            <div class="flow-info2">
-              <div class="flow-info-item">
-                <p class="flow-title">
-                  <span class="info-icon"></span>
-                  <span class="info-title">活动公告</span>
-                </p>
-                <p class="flow-content">
-                  活动公告活动公告活动公告活动公告活动公告活动公告活动公告活动公告活动公告
-                </p>
-              </div>
-            </div>
-          </div>
-          <div></div>
         </div>
       </div>
       <div class="content-right">
@@ -109,7 +117,6 @@
         <div class="title2"></div>
         <CommunityMeet></CommunityMeet>
       </div>
-      <div class="position"></div>
     </div>
   </div>
 </template>
@@ -301,8 +308,15 @@ export default {
       }
     }
     .content-center {
-      height: 23.0444vh;
-      align-self: flex-end;
+      .iframe {
+        width: 64.8125rem;
+        height: 67vh;
+        margin-bottom: 0.9259vh;
+        iframe {
+          width: 100%;
+          height: 100%;
+        }
+      }
       .title {
         width: 64.8125rem;
         height: 4.5296vh;

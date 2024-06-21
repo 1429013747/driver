@@ -134,63 +134,71 @@
         </div>
       </div>
       <div class="content-center">
-        <div class="title"></div>
-        <div class="center-item">
-          <div>
-            <div class="title-item">
-              <p class="text">会员性别比例</p>
-            </div>
-            <div class="chart-info">
-              <Chart :options="options3"></Chart>
-              <div class="box">
-                <div class="type">
-                  <p>男性</p>
-                  <p class="text">60%</p>
+        <div class="iframe">
+          <iframe
+            src="https://wmwlsq.gongshu.gov.cn/oa/3D/"
+            frameborder="0"
+          ></iframe>
+        </div>
+        <div>
+          <div class="title"></div>
+          <div class="center-item">
+            <div>
+              <div class="title-item">
+                <p class="text">会员性别比例</p>
+              </div>
+              <div class="chart-info">
+                <Chart :options="options3"></Chart>
+                <div class="box">
+                  <div class="type">
+                    <p>男性</p>
+                    <p class="text">60%</p>
+                  </div>
+                  <div class="type">
+                    <p>女性</p>
+                    <p class="text">40%</p>
+                  </div>
                 </div>
-                <div class="type">
-                  <p>女性</p>
-                  <p class="text">40%</p>
+              </div>
+            </div>
+            <div>
+              <div class="title-item">
+                <p class="text2">会员年龄段分布</p>
+              </div>
+              <div class="chart-info">
+                <div class="chart" ref="chart"></div>
+              </div>
+            </div>
+            <div>
+              <div class="content-info">
+                <div class="temp-item">
+                  <p>平均跑步时长</p>
+                  <p>36min</p>
+                </div>
+                <div class="temp-item2">
+                  <p>平均跑步距离</p>
+                  <p>5km</p>
                 </div>
               </div>
-            </div>
-          </div>
-          <div>
-            <div class="title-item">
-              <p class="text2">会员年龄段分布</p>
-            </div>
-            <div class="chart-info">
-              <div class="chart" ref="chart"></div>
-            </div>
-          </div>
-          <div>
-            <div class="content-info">
-              <div class="temp-item">
-                <p>平均跑步时长</p>
-                <p>36min</p>
+              <div class="content-info">
+                <div class="temp-item3">
+                  <p>日活跃度</p>
+                  <p>124</p>
+                </div>
+                <div class="temp-item3">
+                  <p>周活跃度</p>
+                  <p>785</p>
+                </div>
               </div>
-              <div class="temp-item2">
-                <p>平均跑步距离</p>
-                <p>5km</p>
-              </div>
-            </div>
-            <div class="content-info">
-              <div class="temp-item3">
-                <p>日活跃度</p>
-                <p>124</p>
-              </div>
-              <div class="temp-item3">
-                <p>周活跃度</p>
-                <p>785</p>
-              </div>
-            </div>
-            <div class="content-info">
-              <div class="temp-item3">
-                <p>月活跃度</p>
-                <p>3451</p>
-              </div>
-              <div class="temp-item3">
-                <p>总活跃度</p>
-                <p>34785</p>
+              <div class="content-info">
+                <div class="temp-item3">
+                  <p>月活跃度</p>
+                  <p>3451</p>
+                </div>
+                <div class="temp-item3">
+                  <p>总活跃度</p>
+                  <p>34785</p>
+                </div>
               </div>
             </div>
           </div>
@@ -264,7 +272,6 @@
 
         <div class="chart3" ref="chart3"></div>
       </div>
-      <div class="position"></div>
     </div>
   </div>
 </template>
@@ -1062,7 +1069,15 @@ export default {
       }
     }
     .content-center {
-      align-self: flex-end;
+      .iframe {
+        width: 64.8125rem;
+        height: 67vh;
+        margin-bottom: 0.9259vh;
+        iframe {
+          width: 100%;
+          height: 100%;
+        }
+      }
       .title {
         width: 1031px;
         height: 4.0741vh;
