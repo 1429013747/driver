@@ -1,5 +1,4 @@
 const { defineConfig } = require("@vue/cli-service");
-
 // 引入等比适配插件
 const pxToRem = require("postcss-pxtorem");
 // 配置基本大小
