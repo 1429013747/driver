@@ -123,7 +123,7 @@ export default {
       //(第二个参数可以设置你这个环形的高低程度)
       const boxHeight = this.getHeight3D(series, this.options.chartHeight); //通过传参设定3d饼/环的高度
       // 准备待返回的配置项，把准备好的 legendData、series 传入。
-      console.log(this.options.legend);
+      // console.log(this.options.legend);
       this.option = {
         backgroundColor: "transparent",
         //图例组件
@@ -146,7 +146,7 @@ export default {
               right: 20,
               bottom: 50,
               //图例文字每项之间的间隔W
-              itemGap: 1,
+              itemGap: 0,
               show: true,
               icon: "rect",
               itemHeight: 10,

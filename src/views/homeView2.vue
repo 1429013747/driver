@@ -29,31 +29,47 @@
         <div class="title2">
           <p class="index">居民健康指数</p>
           <div class="index-info">
-            <p><span class="active">老人</span></p>
-            <p><span>居民</span></p>
+            <p @click="toggle()"><span class="active">老人</span></p>
+            <p @click="toggle()"><span>居民</span></p>
           </div>
         </div>
-        <div class="info">
+        <div class="info" v-if="isShow">
           <div class="info-item">
             <div class="icon"></div>
             <div>
               <p class="text">平均血糖值</p>
-              <p class="text2">300</p>
+              <p class="text2">6.1</p>
             </div>
           </div>
           <div class="info-item">
             <div class="icon1"></div>
             <div>
               <p class="text">平均血压值</p>
-              <p class="text2">89/105</p>
+              <p class="text2">120/88</p>
+            </div>
+          </div>
+        </div>
+        <div class="info" v-else>
+          <div class="info-item">
+            <div class="icon"></div>
+            <div>
+              <p class="text">平均血糖值</p>
+              <p class="text2">5.1</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="icon1"></div>
+            <div>
+              <p class="text">平均血压值</p>
+              <p class="text2">115/75</p>
             </div>
           </div>
         </div>
         <div class="title2">
           <p class="index">居民用电</p>
           <div class="index-info">
-            <p><span class="active">月度</span></p>
-            <p><span>日度</span></p>
+            <p @click="toggleView('month')"><span class="active">月度</span></p>
+            <p @click="toggleView('day')"><span>日度</span></p>
           </div>
         </div>
         <div class="customChart" ref="customChart"></div>
@@ -66,8 +82,8 @@
           <div class="circle">
             <p class="text1">走访总次数</p>
             <p>
-              <span class="text2">3.6</span>
-              <span>km</span>
+              <span class="text2">167</span>
+              <span>次</span>
             </p>
           </div>
         </div>
@@ -75,21 +91,21 @@
           <div class="view-info-item">
             <p class="text">绑定总数</p>
             <p>
-              <span class="text2">12635</span>
+              <span class="text2">145</span>
               <span>个</span>
             </p>
           </div>
           <div class="view-info-item">
-            <p class="text">绑定总数</p>
+            <p class="text">使用总数</p>
             <p>
-              <span class="text2">12635</span>
+              <span class="text2">87</span>
               <span>个</span>
             </p>
           </div>
           <div class="view-info-item">
-            <p class="text">绑定总数</p>
+            <p class="text">设备正常总数</p>
             <p>
-              <span class="text2">12635</span>
+              <span class="text2">145</span>
               <span>个</span>
             </p>
           </div>
@@ -111,7 +127,7 @@
         <div class="health">
           <div class="health-item">
             <div class="title">老人健康步数</div>
-            <div class="customChart2" ref="customChart2"></div>
+            <div class="chart11" ref="chart1"></div>
           </div>
           <div class="health-item">
             <div class="title">互动次数(月平均)</div>
@@ -161,12 +177,43 @@
                 </div>
               </div>
             </div>
-            <div>
-              <div class="title-item">
-                <p class="text2">会员年龄段分布</p>
+            <div class="center-box">
+              <div>
+                <div class="title-item">
+                  <p class="text2">会员年龄段分布</p>
+                </div>
+                <div class="content-item">
+                  <span>20岁以下：</span>
+                  <span>30%</span>
+                </div>
+                <div class="content-item">
+                  <span>21-30岁：</span>
+                  <span>33%</span>
+                </div>
+                <div class="content-item">
+                  <span>31-50岁：</span>
+                  <span>20%</span>
+                </div>
+                <div class="content-item">
+                  <span>50岁以上：</span>
+                  <span>17%</span>
+                </div>
               </div>
-              <div class="chart-info">
-                <div class="chart" ref="chart"></div>
+              <div>
+                <div class="title-item">
+                  <p class="text2">
+                    月度签到数 <span class="text-num">6721次</span>
+                  </p>
+                </div>
+
+                <div class="content-item">
+                  <span>50岁以下：</span>
+                  <span>96%</span>
+                </div>
+                <div class="content-item">
+                  <span>50岁以上：</span>
+                  <span>4%</span>
+                </div>
               </div>
             </div>
             <div>
@@ -208,7 +255,7 @@
         <div class="title"></div>
         <div class="title2">
           <p class="text">幼儿人脸录入总数</p>
-          <p class="text2">16823<sapn style="font-size: 15px">人</sapn></p>
+          <p class="text2">286<span style="font-size: 15px">人</span></p>
         </div>
         <div class="title-bg">
           <p class="index">家长查询信息数据</p>
@@ -221,7 +268,7 @@
         <div class="chart2" ref="chart2"></div>
         <div class="title2">
           <p class="text">摄像头总个数</p>
-          <p class="text2">15167<sapn style="font-size: 15px">人</sapn></p>
+          <p class="text2">108<span style="font-size: 15px">个</span></p>
         </div>
 
         <div class="title-bg">
@@ -257,12 +304,12 @@
 
         <div class="title-p"></div>
         <div class="chart">
-          <Chart :options="options4"></Chart>
+          <Chart :options="options5"></Chart>
           <div class="bottomBg"></div>
           <div class="circle">
-            <p class="text1">幼儿轨迹活动分析</p>
+            <p class="text1">用户总兑换次数</p>
             <p class="text1">
-              <span class="text2">3106条</span>
+              <span class="text2">1287次</span>
             </p>
           </div>
         </div>
@@ -373,6 +420,35 @@ export default {
           width: "51%",
         },
       },
+      options5: {
+        data: [
+          {
+            name: "肥皂", //名称
+            value: 47, //值
+          },
+          {
+            name: "长柄锅刷",
+            value: 15,
+          },
+          {
+            name: "洁厕液",
+            value: 15,
+          },
+          {
+            name: "口罩",
+            value: 23,
+          },
+        ],
+        width: "18.75rem",
+        legend: true,
+        height: "11.6vh",
+        chartHeight: 18,
+        alpha: 20,
+        beta: 30,
+        grid3D: {
+          width: "51%",
+        },
+      },
       options3: {
         data: [
           {
@@ -394,20 +470,45 @@ export default {
           width: "51%",
         },
       },
+      isShow: true,
+      isShow2: true,
+      dataList: {
+        data: [150, 230, 224, 218, 135, 147, 260],
+        name: "月度",
+      },
     };
   },
   mounted() {
     this.init();
+
     this.init2();
+
     this.init3();
+
     this.init4();
     this.init5();
   },
   methods: {
+    toggle() {
+      this.isShow = !this.isShow;
+    },
+    toggleView(item) {
+      if (item === "month") {
+        this.dataList = {
+          data: [150, 230, 224, 218, 135, 147, 260],
+          name: "月度",
+        };
+      } else {
+        this.dataList = {
+          data: [50, 90, 74, 48, 55, 57, 130],
+          name: "日度",
+        };
+      }
+      this.init();
+    },
     init() {
       const chart = echarts.init(this.$refs.customChart);
-
-      const opitions = {
+      const options = {
         grid: {
           top: "6%",
           left: "3%",
@@ -416,6 +517,10 @@ export default {
           containLabel: true,
         },
         color: ["#3aa0ff"],
+        tooltip: {
+          show: true,
+          formatter: "<div>{a}</div><div>{b}： {c} 度</div>",
+        },
         xAxis: {
           type: "category",
           data: ["1月", "2月", "3月", "4月", "5月", "6月", "7月"],
@@ -438,7 +543,8 @@ export default {
         },
         series: [
           {
-            data: [150, 230, 224, 218, 135, 147, 260],
+            name: this.dataList.name,
+            data: this.dataList.data,
             type: "bar",
             barWidth: "30%",
             areaStyle: {
@@ -457,21 +563,25 @@ export default {
           },
         ],
       };
-      chart.setOption(opitions);
+      chart.setOption(options);
       window.addEventListener("resize", () => {
         chart.resize();
       });
     },
     init2() {
-      const chart = echarts.init(this.$refs.customChart2);
-
-      const opitions = {
+      const chart = echarts.init(this.$refs.chart1);
+      const options = {
         grid: {
           top: "6%",
           left: "3%",
           right: "4%",
           bottom: "3%",
           containLabel: true,
+        },
+        tooltip: {
+          trigger: "axis",
+          formatter: "<p>{a}</p><p>周{b}： {c} 步</p>",
+          position: ["30%", "-50%"],
         },
         color: ["#3aa0ff"],
         xAxis: {
@@ -496,9 +606,9 @@ export default {
         },
         series: [
           {
+            name: "步数",
             data: [650, 630, 524, 518, 535, 647, 660],
             type: "line",
-            barWidth: "30%",
             areaStyle: {
               opacity: 0.5,
               color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
@@ -515,15 +625,16 @@ export default {
           },
         ],
       };
-      chart.setOption(opitions);
+
+      chart.setOption(options, true);
       window.addEventListener("resize", () => {
         chart.resize();
       });
     },
     init3() {
-      const chart = echarts.init(this.$refs.chart);
+      const chart = echarts.init(this.$refs.chart2);
 
-      const opitions = {
+      const options = {
         legend: {
           top: "center",
           right: "29px",
@@ -562,15 +673,14 @@ export default {
           },
         ],
       };
-      chart.setOption(opitions);
+      chart.setOption(options);
       window.addEventListener("resize", () => {
         chart.resize();
       });
     },
     init4() {
       const chart = echarts.init(this.$refs.chart2);
-
-      const opitions = {
+      const options = {
         grid: {
           top: "6%",
           left: "3%",
@@ -579,6 +689,10 @@ export default {
           containLabel: true,
         },
         color: ["#3aa0ff"],
+        tooltip: {
+          trigger: "axis",
+          formatter: "<p>周{b}： {c} 次</p>",
+        },
         xAxis: {
           type: "category",
           data: ["一", "二", "三", "四", "五", "六", "日"],
@@ -620,7 +734,7 @@ export default {
           },
         ],
       };
-      chart.setOption(opitions);
+      chart.setOption(options);
       window.addEventListener("resize", () => {
         chart.resize();
       });
@@ -628,7 +742,7 @@ export default {
     init5() {
       const chart = echarts.init(this.$refs.chart3);
 
-      const opitions = {
+      const options = {
         grid: {
           top: "6%",
           left: "3%",
@@ -637,6 +751,10 @@ export default {
           containLabel: true,
         },
         color: ["#3aa0ff"],
+        tooltip: {
+          trigger: "axis",
+          formatter: "<p>周{b}： {c} 条</p>",
+        },
         xAxis: {
           type: "category",
           data: ["一", "二", "三", "四", "五", "六", "日"],
@@ -678,7 +796,7 @@ export default {
           },
         ],
       };
-      chart.setOption(opitions);
+      chart.setOption(options);
       window.addEventListener("resize", () => {
         chart.resize();
       });
@@ -833,6 +951,7 @@ export default {
       flex-direction: column;
       width: 23.875rem;
       align-items: center;
+      overflow: hidden;
       // height: 88vh;
       .title {
         width: 22.875rem;
@@ -955,8 +1074,8 @@ export default {
           height: 7vh;
           background: url(../assets/home2/bottom.png) no-repeat center/100% 100%;
           position: absolute;
-          top: 58px;
-          left: 5px;
+          top: 3.225rem;
+          left: 0.2125rem;
           z-index: -1;
         }
         .circle {
@@ -1011,19 +1130,21 @@ export default {
           }
         }
       }
+      .chart11 {
+        width: 160px;
+        height: 9.1111vh;
+      }
       .health {
         display: flex;
         justify-content: space-between;
-        align-items: center;
         margin: 0 30px;
         width: 88%;
         .health-item {
-          background-image: -webkit-linear-gradient(#fff, #4faeff);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
+          // background-image: -webkit-linear-gradient(#fff, #4faeff);
+          // -webkit-background-clip: text;
+          // -webkit-text-fill-color: transparent;
           .title {
             margin-bottom: 6px;
-            width: 160px;
             height: 3.0556vh;
             background: url(../assets/home2/bg2.png) no-repeat center/100% 100%;
             font-weight: bold;
@@ -1033,15 +1154,12 @@ export default {
             line-height: 2.8704vh;
             padding-left: 3.125rem;
           }
-          .customChart2 {
-            width: 160px;
-            height: 9.1111vh;
-          }
+
           .info {
             display: flex;
             justify-content: center;
             justify-content: space-between;
-            margin: 0.8vh;
+            margin: 0.4vh;
             .icon {
               width: 20px;
               height: 20px;
@@ -1069,6 +1187,7 @@ export default {
       }
     }
     .content-center {
+      overflow: hidden;
       .iframe {
         width: 64.8125rem;
         height: 67vh;
@@ -1087,6 +1206,76 @@ export default {
       .center-item {
         display: flex;
         justify-content: space-between;
+
+        .center-box {
+          display: flex;
+          justify-content: space-between;
+          .title-item {
+            width: 180px;
+            height: 3.0556vh;
+            margin-right: 6px;
+            background: url(../assets/home2/bg3.png) no-repeat left/cover;
+
+            .text2 {
+              line-height: 3.0556vh;
+              padding-left: 36px;
+              .text-num {
+                padding-left: 4px;
+                line-height: 3.1556vh;
+                background-image: -webkit-linear-gradient(#fff, #4faeff);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+              }
+            }
+          }
+          .content-item {
+            background-image: -webkit-linear-gradient(#fff, #4faeff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            padding: 4px 25px;
+            margin: 0 15px;
+            font-weight: bold;
+            font-size: 14px;
+            border-bottom: 1px solid #284772;
+            height: 2.037vh;
+          }
+          .content-item:nth-of-type(2)::before {
+            // 添加一个方块
+            display: inline-block;
+            content: "";
+            width: 10px;
+            margin-right: 4px;
+            height: 10px;
+            background: rgb(83, 226, 92);
+          }
+          .content-item:nth-of-type(3)::before {
+            // 添加一个方块
+            display: inline-block;
+            content: "";
+            width: 10px;
+            margin-right: 4px;
+            height: 10px;
+            background: rgb(26, 190, 205);
+          }
+          .content-item:nth-of-type(4)::before {
+            // 添加一个方块
+            display: inline-block;
+            content: "";
+            width: 10px;
+            margin-right: 4px;
+            height: 10px;
+            background: rgb(243, 186, 0);
+          }
+          .content-item:nth-of-type(5)::before {
+            // 添加一个方块
+            display: inline-block;
+            content: "";
+            width: 10px;
+            margin-right: 4px;
+            height: 10px;
+            background: rgb(182, 210, 25);
+          }
+        }
         .title-item {
           width: 323px;
           height: 3.0556vh;
@@ -1188,6 +1377,7 @@ export default {
       display: flex;
       flex-direction: column;
       align-items: center;
+      overflow: hidden;
       .title {
         width: 366px;
         height: 3.9815vh;
@@ -1200,9 +1390,9 @@ export default {
         display: flex;
         align-items: center;
         text-align: center;
-        justify-content: flex-end;
+        justify-content: space-between;
         .text {
-          margin-right: 75px;
+          margin-left: 70px;
           font-weight: bold;
           background-image: -webkit-linear-gradient(#fff, #4faeff);
           -webkit-background-clip: text;

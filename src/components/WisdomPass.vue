@@ -1,6 +1,6 @@
 <template>
   <div class="wisdom-container">
-    <div class="wisdom">
+    <!-- <div class="wisdom">
       <div class="video-box">
         <div class="video"></div>
         <div class="text">南区车闸入口</div>
@@ -9,44 +9,65 @@
         <div class="video"></div>
         <div class="text">北区车闸入口</div>
       </div>
-    </div>
+    </div> -->
     <div class="info">
       <div class="info-item">
         <div class="info-item-icon1"></div>
         <div class="info-item-content">
           <p class="text">今日进入车辆</p>
           <p>
-            <span>96</span>
-            <span style="font-size: 0.875rem">元</span>
+            <span>87</span>
+            <span style="font-size: 0.675rem">辆</span>
           </p>
         </div>
       </div>
       <div class="info-item">
         <div class="info-item-icon2"></div>
         <div class="info-item-content">
-          <p class="text">临时车辆占比</p>
+          <p class="text">今日出车辆</p>
           <p>
-            <span>16%</span>
+            <span>95</span>
+            <span style="font-size: 0.675rem">辆</span>
           </p>
         </div>
       </div>
       <div class="info-item">
         <div class="info-item-icon3"></div>
         <div class="info-item-content">
-          <p class="text">临时车收费金额</p>
+          <p class="text">党群服务中心今日进入</p>
           <p>
-            <span>65</span>
-            <span style="font-size: 0.875rem">元</span>
+            <span>53</span>
+            <span style="font-size: 0.675rem">人</span>
           </p>
         </div>
       </div>
       <div class="info-item">
         <div class="info-item-icon4"></div>
         <div class="info-item-content">
-          <p class="text">临时车辆占比</p>
+          <p class="text">党群服务中心今日出</p>
           <p>
-            <span>45</span>
-            <span style="font-size: 0.875rem">人</span>
+            <span>43</span>
+            <span style="font-size: 0.675rem">人</span>
+          </p>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-item-icon3"></div>
+        <div class="info-item-content">
+          <p class="text">社区服务区中心今日进入</p>
+          <p>
+            <span>141</span>
+            <span style="font-size: 0.675rem">人</span>
+          </p>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-item-icon4"></div>
+        <div class="info-item-content">
+          <p class="text">社区服务区中心今日出</p>
+          <p>
+            <span>129</span>
+            <span style="font-size: 0.675rem">人</span>
           </p>
         </div>
       </div>
@@ -88,8 +109,8 @@ export default {};
       display: flex;
       align-items: center;
       background: url("../assets/home/bg2.png") no-repeat center/100% 100%;
-      width: 10.65rem;
-      height: 5.5778vh;
+      width: 10.95rem;
+      height: 6.0778vh;
 
       .info-item-icon1 {
         background: url("../assets/home/car-inter.png") no-repeat;
@@ -118,7 +139,7 @@ export default {};
       }
       .info-item-content {
         .text {
-          font-size: 0.875rem;
+          font-size: 0.775rem;
           letter-spacing: 0.1875rem;
           font-weight: bold;
           color: #98c7f3;

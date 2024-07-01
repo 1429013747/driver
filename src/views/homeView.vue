@@ -13,9 +13,9 @@
         <div class="title3"><p>星火·智治</p></div>
         <div class="title4"><p>星火·模型</p></div>
         <div class="times">
-          <p>2024-01-19</p>
-          <p>星期四</p>
-          <p class="time-detailed">13:53:20</p>
+          <p>{{ today.day }}</p>
+          <p>{{ today.week }}</p>
+          <p class="time-detailed">{{ today.time }}</p>
         </div>
       </div>
     </div>
@@ -127,6 +127,7 @@ import RidentActivity from "@/components/RidentActivity.vue";
 import PeopleDraw from "@/components/PeopleDraw.vue";
 import GarbageManagement from "@/components/GarbageManagement.vue";
 import CommunityMeet from "@/components/CommunityMeets.vue";
+import { formatDate } from "@/utils/common.js";
 export default {
   components: {
     WisdomPass,
@@ -136,10 +137,31 @@ export default {
     CommunityMeet,
   },
   data() {
-    return {};
+    return {
+      today: {
+        day: "",
+        week: "",
+        time: "",
+      },
+    };
   },
-  mounted() {},
+  mounted() {
+    const temp = formatDate(new Date()); // 获取时间
+    this.today.day = temp.month;
+    this.today.time = temp.dateTime;
+    this.today.week = temp.date;
+
+    this.timer = setInterval(() => {
+      const temp = formatDate(new Date()); // 获取时间
+      this.today.day = temp.month;
+      this.today.time = temp.dateTime;
+      this.today.week = temp.date;
+    }, 1000);
+  },
   methods: {},
+  beforeDestroy() {
+    clearInterval(this.timer);
+  },
 };
 </script>
 
@@ -273,7 +295,7 @@ export default {
           font-size: 1.25rem;
           text-align: left;
           color: #ffffff;
-          letter-spacing: 0.125rem;
+          constter-spacing: 0.125rem;
         }
       }
     }
@@ -287,6 +309,7 @@ export default {
       display: flex;
       flex-direction: column;
       width: 23.575rem;
+      overflow: hidden;
       justify-content: space-between;
       height: 88vh;
       .title {
@@ -296,13 +319,13 @@ export default {
       }
       .title2 {
         width: 22.875rem;
-        margin-top: 1rem;
+        margin-top: 0.3rem;
         height: 4.6296vh;
         background: url(../assets/home/titleBg2.png) no-repeat center/100% 100%;
       }
       .title3 {
         width: 22.875rem;
-        margin-top: 1rem;
+        margin-top: 0.3rem;
         height: 4.6296vh;
         background: url(../assets/home/titleBg3.png) no-repeat center/100% 100%;
       }
@@ -349,7 +372,7 @@ export default {
           p {
             font-size: 0.875rem;
             color: #ffffff;
-            letter-spacing: 0.1875rem;
+            constter-spacing: 0.1875rem;
           }
           .num {
             font-weight: bold;
@@ -375,7 +398,7 @@ export default {
           .sign-title {
             font-size: 0.875rem;
             color: #ffffff;
-            letter-spacing: 0.1875rem;
+            constter-spacing: 0.1875rem;
             font-weight: bold;
             margin-left: 0.5rem;
           }
@@ -404,14 +427,14 @@ export default {
               .info-title {
                 font-weight: bold;
                 color: #ffffff;
-                letter-spacing: 0.1rem;
+                constter-spacing: 0.1rem;
               }
             }
             .flow-content {
               font-size: 0.75rem;
               text-align: left;
               color: #ffffff;
-              letter-spacing: 0.1875rem;
+              constter-spacing: 0.1875rem;
               width: 35.9375rem;
               white-space: nowrap;
               overflow: hidden;

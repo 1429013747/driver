@@ -3,13 +3,9 @@
     <div class="chat-info">
       <div class="people-drawd" ref="chart"></div>
       <div class="box">
-        <div class="box-item">
+        <div class="box-item" v-show="!isShow">
           <p>议事总数</p>
-          <p style="font-weight: bold">176</p>
-        </div>
-        <div class="box-item">
-          <p>当月议事数</p>
-          <p style="font-weight: bold">16</p>
+          <p style="font-weight: bold">30</p>
         </div>
       </div>
       <div style="display: flex; justify-content: center">
@@ -18,10 +14,10 @@
       <el-table :data="tableData">
         <el-table-column prop="date" align="center" label="议事时间">
         </el-table-column>
-        <el-table-column prop="name" align="center" label="议事地点">
+        <el-table-column prop="address" align="center" label="议事地点">
         </el-table-column>
         <el-table-column
-          prop="address"
+          prop="name"
           align="center"
           label="议事标题"
           width="200"
@@ -29,6 +25,9 @@
         </el-table-column>
       </el-table>
     </div>
+    <p class="custom-num2" @click="toggle">
+      <span>切换</span>
+    </p>
   </div>
 </template>
 
@@ -41,63 +40,141 @@ export default {
       option: {},
       tableData: [
         {
-          date: "2024-01-25",
-          name: "党群服务中心",
-          address: "未来社区数字化例会",
+          date: "2024-6-2",
+          address: "柳营巷",
+          name: "王马未来社区创建专题推进会",
         },
         {
-          date: "2024-01-25",
-          name: "党群服务中心",
-          address: "未来社区数字化例会",
+          date: "2024-6-9",
+          address: "柳营巷",
+          name: "王马未来社区创建专题推进会",
         },
         {
-          date: "2024-01-25",
-          name: "党群服务中心",
-          address: "未来社区数字化例会",
+          date: "2024-6-16",
+          address: "柳营巷",
+          name: "王马未来社区创建专题推进会",
+        },
+        {
+          date: "2024-6-23",
+          address: "社区服务中心",
+          name: "王马未来社区创建专题推进会",
         },
       ],
-    };
-  },
-  mounted() {
-    this.init();
-  },
-  methods: {
-    init() {
-      const pieData = [
+      pieData: [
         {
           name: "已完结", //名称
-          value: 196, //值
+          value: 26, //值
+          rate: "86%",
           itemStyle: {
             color: "#0161e6", //半透明
           },
         },
         {
           name: "处理中",
-          value: 270,
+          value: 2,
+          rate: "6%",
           itemStyle: {
             color: "#198f9b",
           },
         },
         {
           name: "待开始",
-          value: 150,
+          value: 1,
+
+          rate: "3%",
           itemStyle: {
             color: "#d8be11",
           },
         },
         {
           name: "待审核",
-          value: 100,
+          value: 1,
+          rate: "3%",
           itemStyle: {
             color: "#7fc9ea",
           },
         },
-      ];
+      ],
+      isShow: false,
+    };
+  },
+  mounted() {
+    this.init();
+  },
+  methods: {
+    toggle() {
+      if (this.isShow) {
+        this.pieData = [
+          {
+            name: "已完结", //名称
+            value: 26, //值
+            rate: "86%",
+            itemStyle: {
+              color: "#0161e6", //半透明
+            },
+          },
+          {
+            name: "处理中",
+            value: 2,
+            rate: "6%",
+            itemStyle: {
+              color: "#198f9b",
+            },
+          },
+          {
+            name: "待开始",
+            value: 1,
 
+            rate: "3%",
+            itemStyle: {
+              color: "#d8be11",
+            },
+          },
+          {
+            name: "待审核",
+            value: 1,
+            rate: "3%",
+            itemStyle: {
+              color: "#7fc9ea",
+            },
+          },
+        ];
+      } else {
+        this.pieData = [
+          {
+            name: "1-18岁", //名称
+            value: 1, //值
+            rate: "1%",
+            itemStyle: {
+              color: "#0161e6", //半透明
+            },
+          },
+          {
+            name: "28-59岁",
+            value: 90,
+            rate: "90%",
+            itemStyle: {
+              color: "#198f9b",
+            },
+          },
+          {
+            name: "60岁以上",
+            value: 9,
+            rate: "9%",
+            itemStyle: {
+              color: "#d8be11",
+            },
+          },
+        ];
+      }
+      this.isShow = !this.isShow;
+      this.init();
+    },
+    init() {
       //初始化echarts
       const myChart = echarts.init(this.$refs.chart);
       //设置图表配置项
-      this.option = this.getPie3D(pieData, 0.8);
+      this.option = this.getPie3D(this.pieData, 0.8);
       //设置图表配置项
       myChart.setOption(this.option);
       window.addEventListener("resize", () => {
@@ -222,13 +299,15 @@ export default {
 
           //格式化图例文本
           formatter: function (name) {
-            var target;
+            console.log(name, "name");
+            var target, rate;
             for (var i = 0, l = pieData.length; i < l; i++) {
               if (pieData[i].name == name) {
                 target = pieData[i].value;
+                rate = pieData[i].rate;
               }
             }
-            return `${name}   ${target}`;
+            return `${name}  ${target}  ${rate}`;
           },
         },
         //移动上去提示的文本内容
@@ -276,8 +355,8 @@ export default {
           show: false,
           boxHeight: boxHeight, //圆环的高度
           //这是饼图的位置
-          // left: 0,
-          // top: 0,
+          left: 0,
+          top: 0,
           // right: 120,
           width: 200,
           viewControl: {
@@ -396,6 +475,7 @@ export default {
 
 <style lang="scss" scoped>
 .comunity-contaienr {
+  position: relative;
   .chat-info {
     position: relative;
     .people-drawd {
@@ -454,6 +534,11 @@ export default {
       height: 2.7778vh !important;
       color: #e2e2e3;
     }
+    /deep/ .el-table .cell {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
     /deep/ .el-table tbody tr:hover > td {
       background-color: transparent !important; //修改成自己想要的颜色即可
     }
@@ -479,6 +564,26 @@ export default {
     .el-table--group::after,
     .el-table::before {
       display: none;
+    }
+  }
+  .custom-num2 {
+    position: absolute;
+    top: -52px;
+    right: 31px;
+    width: 130px;
+    text-align: center;
+    background-image: -webkit-linear-gradient(#fff, #4faeff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    span {
+      cursor: pointer;
+      padding: 1px 4px;
+      width: 50px;
+      border: 2px solid #27527c;
     }
   }
 }

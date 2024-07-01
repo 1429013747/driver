@@ -5,20 +5,18 @@
         <p>垃圾点位</p>
         <p>11个</p>
       </div>
-      <div class="count-item">
-        <p>垃圾点位</p>
-        <p>8211个</p>
-      </div>
-      <div class="count-item">
-        <p>垃圾点位</p>
-        <p>114个</p>
-      </div>
+      <el-button
+        type="primary"
+        style="background-color: transparent"
+        @click="showDialog = true"
+        >视频监控</el-button
+      >
     </div>
     <div class="draw-chart">
       <div class="box">
         <div ref="chart" class="chart"></div>
         <div class="chart-tip">
-          <p>86%</p>
+          <p>98%</p>
           <p>垃圾投放正确率</p>
         </div>
       </div>
@@ -35,36 +33,53 @@
       <div class="draw-info-item">
         <el-steps direction="vertical" :active="1">
           <el-step
-            title="2024-01-25"
-            description="其他垃圾桶垃圾溢出"
+            :title="day"
+            description="凤起都市花园1点位其他垃圾通溢出"
             status="wait"
           ></el-step>
           <el-step
-            title="2024-01-25"
-            description="厨余垃圾桶垃圾溢出"
+            :title="day"
+            description="凤起都市花园3点位有害垃圾通溢出"
             status="wait"
           ></el-step>
           <el-step
-            title="2024-01-25"
-            description="有害垃圾桶垃圾溢出"
+            :title="day"
+            description="凤起都市花园3点位厨余垃圾通溢出"
+            status="wait"
+          ></el-step>
+          <el-step
+            :title="day"
+            description="王马社区5点位余垃圾通溢出"
+            status="wait"
+          ></el-step>
+          <el-step
+            :title="day"
+            description="王马社区2点位余垃圾通溢出"
             status="wait"
           ></el-step>
         </el-steps>
       </div>
     </div>
+    <el-dialog :visible.sync="showDialog">
+      <div class="video"></div>
+    </el-dialog>
   </div>
 </template>
 
 <script>
 import * as echarts from "echarts";
+import { formatDate } from "@/utils/common.js";
 export default {
   data() {
     return {
       chart: null,
+      day: null,
+      showDialog: false,
     };
   },
   mounted() {
     this.init();
+    this.day = formatDate(new Date()).month;
   },
   methods: {
     init() {
@@ -129,7 +144,7 @@ export default {
 .garbage-container {
   .count {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     margin: 0 0.9259vh;
     .count-item {
       border: 0.1852vh solid #2d5180;
@@ -191,19 +206,27 @@ export default {
       margin: 1.25rem 0;
       height: 16.3704vh;
       width: 18.75rem;
+      overflow: auto;
       //样式穿透
-
       /deep/ .el-step__title {
-        font-size: 0.875rem;
+        font-size: 0.675rem;
         color: #4faeff;
       }
       /deep/ .el-step__description {
-        font-size: 1.15rem;
+        font-size: 0.775rem;
       }
       /deep/ .el-step__description {
         padding: 0.25rem 0.575rem;
         background: url(../assets/home/stepBg.png) no-repeat center/100% 100%;
       }
+    }
+  }
+  /deep/ .el-dialog {
+    background: #0f1722 !important;
+    .video {
+      background: url(@/assets/home/temp1.png) no-repeat center/100% 100%;
+      width: 920px;
+      height: 60vh;
     }
   }
 }

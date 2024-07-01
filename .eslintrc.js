@@ -15,5 +15,6 @@ module.exports = {
     camelcase: 2, //强制使用骆驼拼写法命名约定
     "vue/multi-word-component-names": [1], //关闭vue组件名必须是多个单词
     "no-dupe-keys": 2, //禁止对象字面量中出现重复的 key
+    "vue/no-dupe-keys": 0,
   },
 };
