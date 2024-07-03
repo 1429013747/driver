@@ -43,7 +43,7 @@
             <el-step
               :title="day"
               :description="item.description"
-              status="wait"
+              :status="item.status"
               v-for="(item, i) in markList"
               :key="i"
             ></el-step>
@@ -69,18 +69,23 @@ export default {
       markList: [
         {
           description: "凤起都市花园1点位其他垃圾通溢出",
+          status: "success",
         },
         {
           description: "凤起都市花园3点位有害垃圾通溢出",
+          status: "success",
         },
         {
           description: "凤起都市花园3点位厨余垃圾通溢出",
+          status: "error",
         },
         {
           description: "王马社区5点位余垃圾通溢出",
+          status: "success",
         },
         {
           description: "王马社区2点位余垃圾通溢出",
+          status: "error",
         },
       ],
     };

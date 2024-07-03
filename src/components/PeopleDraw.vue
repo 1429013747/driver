@@ -8,7 +8,7 @@
     </div>
     <div class="box">
       <div class="people-drawd" ref="chart"></div>
-      <div>
+      <!-- <div>
         <div class="people-info">
           <p class="icon"></p>
           <p class="text">商品房</p>
@@ -19,7 +19,7 @@
           <p class="text">商品房</p>
           <p class="text">1631</p>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -40,15 +40,25 @@ export default {
     init() {
       const pieData = [
         {
-          name: "A", //名称
-          value: 30, //值
+          name: "自住", //名称
+          value: 4021, //值
+          rate: "67.8%",
           itemStyle: {
             color: "#0161e6", //半透明
           },
         },
         {
-          name: "B",
-          value: 5,
+          name: "空置",
+          value: 15,
+          rate: "0.2%",
+          itemStyle: {
+            color: "#1fb4c3",
+          },
+        },
+        {
+          name: "出租",
+          value: 1898,
+          rate: "32%",
           itemStyle: {
             color: "#d8be11",
           },
@@ -152,46 +162,47 @@ export default {
       this.option = {
         backgroundColor: "transparent",
         //图例组件
-        // legend: {
-        //   data: legendData,
-        //   color: [
-        //     "#8FD7FC",
-        //     "#466BE7",
-        //     "#F4BB29",
-        //     "#49C384",
-        //     "#8FD7FC",
-        //     "#466BE7",
-        //     "#F4BB29",
-        //     "#49C384",
-        //   ],
-        //   //图例列表的布局朝向。
-        //   orient: "vertical",
-        //   right: 20,
-        //   bottom: 20,
-        //   //图例文字每项之间的间隔
-        //   itemGap: 5,
-        //   show: true,
-        //   icon: "rect",
-        //   itemHeight: 10,
-        //   itemWidth: 10,
-        //   textStyle: {
-        //     //图例字体大小
-        //     fontSize: 12,
-        //     color: "#B8DDFF",
-        //     lineHeight: 20,
-        //   },
+        legend: {
+          data: legendData,
+          color: [
+            "#8FD7FC",
+            "#466BE7",
+            "#F4BB29",
+            "#49C384",
+            "#8FD7FC",
+            "#466BE7",
+            "#F4BB29",
+            "#49C384",
+          ],
+          //图例列表的布局朝向。
+          orient: "vertical",
+          right: 20,
+          bottom: 40,
+          //图例文字每项之间的间隔
+          itemGap: 5,
+          show: true,
+          icon: "rect",
+          itemHeight: 10,
+          itemWidth: 10,
+          textStyle: {
+            //图例字体大小
+            fontSize: 12,
+            color: "#B8DDFF",
+            lineHeight: 20,
+          },
 
-        //   //格式化图例文本
-        //   formatter: function (name) {
-        //     var target;
-        //     for (var i = 0, l = pieData.length; i < l; i++) {
-        //       if (pieData[i].name == name) {
-        //         target = pieData[i].value;
-        //       }
-        //     }
-        //     return `${name}   ${target}`;
-        //   },
-        // },
+          //格式化图例文本
+          formatter: function (name) {
+            let target, rate;
+            for (let i = 0, l = pieData.length; i < l; i++) {
+              if (pieData[i].name == name) {
+                target = pieData[i].value;
+                rate = pieData[i].rate;
+              }
+            }
+            return `${name}   ${target}   ${rate}`;
+          },
+        },
         //移动上去提示的文本内容
         tooltip: {
           backgroundColor: "rgba(18, 55, 85, 0.8);",
@@ -236,6 +247,7 @@ export default {
         grid3D: {
           show: false,
           boxHeight: boxHeight, //圆环的高度
+          width: "81%",
           //这是饼图的位置
           left: 0,
           top: 0,
@@ -325,13 +337,13 @@ export default {
     },
     //这是一个自定义计算的方法
     fomatFloat(num, n) {
-      var f = parseFloat(num);
+      let f = parseFloat(num);
       if (isNaN(f)) {
         return false;
       }
       f = Math.round(num * Math.pow(10, n)) / Math.pow(10, n); // n 幂
-      var s = f.toString();
-      var rs = s.indexOf(".");
+      let s = f.toString();
+      let rs = s.indexOf(".");
       //判定如果是整数，增加小数点再补0
       if (rs < 0) {
         rs = s.length;
@@ -372,7 +384,7 @@ export default {
   }
   .people-drawd {
     height: 13.1481vh;
-    width: 10.75rem;
+    width: 20rem;
   }
   .box {
     display: flex;

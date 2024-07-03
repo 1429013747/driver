@@ -8,9 +8,9 @@
           <p>多云</p>
           <p>23 ~ 34℃</p>
         </div>
-        <div class="title1"><p>星火·安居</p></div>
+        <div class="title1"><p>星火·智治</p></div>
         <div class="title2"><p>星火·智治</p></div>
-        <div class="title3"><p>星火·智治</p></div>
+        <div class="title3"><p>星火·安居</p></div>
         <div class="title4"><p>星火·模型</p></div>
         <div class="times">
           <p>2024-01-19</p>
@@ -289,16 +289,13 @@
         </div>
         <div class="wisdom">
           <div class="video-box">
-            <div class="video"></div>
-            <div class="text">监控1</div>
-          </div>
-          <div class="video-box">
-            <div class="video"></div>
-            <div class="text">监控2</div>
-          </div>
-          <div class="video-box">
-            <div class="video"></div>
-            <div class="text">监控3</div>
+            <video
+              class="video"
+              ref="video"
+              controls
+              controlslist="nodownload noremoteplayback noplaybackrate"
+              disablePictureInPicture="true"
+            ></video>
           </div>
         </div>
 
@@ -324,13 +321,15 @@
 </template>
 
 <script>
-import * as echarts from "echarts";
 import Chart from "@/components/common/Chart.vue";
 
+import * as echarts from "echarts";
+import Hls from "hls.js";
 export default {
   components: {
     Chart,
   },
+
   data() {
     return {
       options: {
@@ -487,6 +486,14 @@ export default {
 
     this.init4();
     this.init5();
+    const hls = new Hls();
+    hls.loadSource(
+      "https://wangmawlsq.cn:1443/mls/openUrl/dsKtI6A/live.m3u8?params=eyJwcm90b2NvbCI6Imhsc3MiLCJpbmRleENvZGUiOiI4M2FkNjU0YWQ1OTA0ZDQ3OTFkZTNlMWYxMmM4MTgxYSIsIm5ldFpvbmVDb2RlIjoiMSJ9"
+    );
+    hls.attachMedia(this.$refs.video);
+    hls.on(Hls.Events.MANIFEST_PARSED, function () {
+      this.$refs.videoRef.play();
+    });
   },
   methods: {
     toggle() {
@@ -1485,14 +1492,51 @@ export default {
       }
       .wisdom {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         width: 95%;
         .video-box {
           .video {
-            height: 6.3889vh;
-            width: 110px;
-            background: url("../assets/home2/video.png") no-repeat center/100%
-              100%;
+            mix-blend-mode: screen;
+            display: block;
+            height: 7vh;
+            width: 11.875rem;
+            // background: url("../assets/home2/video.png") no-repeat center/100%
+            //   100%;
+            //全屏按钮
+            // &::-webkit-media-controls-fullscreen-button {
+            //   display: none;
+            // }
+            //播放按钮
+            &::-webkit-media-controls-play-button {
+              display: none;
+            }
+            //进度条
+            &::-webkit-media-controls-timeline {
+              display: none;
+            }
+            //观看的当前时间
+            &::-webkit-media-controls-current-time-display {
+              display: none;
+            }
+            //剩余时间
+            &::-webkit-media-controls-time-remaining-display {
+              display: none;
+            }
+            //音量按钮
+            &::-webkit-media-controls-mute-button {
+              display: none;
+            }
+            &::-webkit-media-controls-toggle-closed-captions-button {
+              display: none;
+            }
+            //音量的控制条
+            &::-webkit-media-controls-volume-slider {
+              display: none;
+            }
+            //所有控件
+            // &::-webkit-media-controls-enclosure {
+            //   display: none;
+            // }
           }
           .text {
             text-align: center;

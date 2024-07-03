@@ -8,9 +8,9 @@
           <p>多云</p>
           <p>23 ~ 34℃</p>
         </div>
-        <div class="title1"><p>星火·安居</p></div>
+        <div class="title1"><p>星火·智治</p></div>
         <div class="title2"><p>星火·智治</p></div>
-        <div class="title3"><p>星火·智治</p></div>
+        <div class="title3"><p>星火·安居</p></div>
         <div class="title4"><p>星火·模型</p></div>
         <div class="times">
           <p>{{ today.day }}</p>
@@ -295,7 +295,7 @@ export default {
           font-size: 1.25rem;
           text-align: left;
           color: #ffffff;
-          constter-spacing: 0.125rem;
+          letter-spacing: 0.125rem;
         }
       }
     }
@@ -372,7 +372,7 @@ export default {
           p {
             font-size: 0.875rem;
             color: #ffffff;
-            constter-spacing: 0.1875rem;
+            letter-spacing: 0.1875rem;
           }
           .num {
             font-weight: bold;
@@ -398,7 +398,7 @@ export default {
           .sign-title {
             font-size: 0.875rem;
             color: #ffffff;
-            constter-spacing: 0.1875rem;
+            letter-spacing: 0.1875rem;
             font-weight: bold;
             margin-left: 0.5rem;
           }
@@ -427,14 +427,14 @@ export default {
               .info-title {
                 font-weight: bold;
                 color: #ffffff;
-                constter-spacing: 0.1rem;
+                letter-spacing: 0.1rem;
               }
             }
             .flow-content {
               font-size: 0.75rem;
               text-align: left;
               color: #ffffff;
-              constter-spacing: 0.1875rem;
+              letter-spacing: 0.1875rem;
               width: 35.9375rem;
               white-space: nowrap;
               overflow: hidden;
@@ -447,13 +447,13 @@ export default {
     .content-right {
       width: 26rem;
       .title {
-        width: 22.875rem;
-        height: 4.6296vh;
+        width: 24.875rem;
+        height: 3.6296vh;
         background: url(../assets/home/titleBg5.png) no-repeat center/100% 100%;
       }
       .title2 {
-        width: 22.875rem;
-        height: 4.6296vh;
+        width: 24.875rem;
+        height: 3.6296vh;
         background: url(../assets/home/titleBg8.png) no-repeat center/100% 100%;
       }
     }

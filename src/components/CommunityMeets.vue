@@ -549,7 +549,7 @@ export default {
     }
     /deep/ .el-table {
       background: transparent;
-      width: 520px !important;
+      width: 400px !important;
     }
     /deep/ .el-table__body {
       width: 100% !important;
