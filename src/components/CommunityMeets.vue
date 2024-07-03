@@ -7,23 +7,32 @@
           <p>议事总数</p>
           <p style="font-weight: bold">30</p>
         </div>
+        <div class="box-item" v-show="!isShow">
+          <p>月度召开议题的场次</p>
+          <p style="font-weight: bold">4</p>
+        </div>
       </div>
       <div style="display: flex; justify-content: center">
         <div class="title"></div>
       </div>
-      <el-table :data="tableData">
-        <el-table-column prop="date" align="center" label="议事时间">
-        </el-table-column>
-        <el-table-column prop="address" align="center" label="议事地点">
-        </el-table-column>
-        <el-table-column
-          prop="name"
-          align="center"
-          label="议事标题"
-          width="200"
+      <div class="table-box">
+        <div class="top-box">
+          <p>议事时间</p>
+          <p>议事地点</p>
+          <p>议事标题</p>
+        </div>
+        <vue-seamless-scroll
+          :data="tableData"
+          :class-option="seamlessScrollOption"
         >
-        </el-table-column>
-      </el-table>
+          <el-table :data="tableData">
+            <el-table-column prop="date" align="center"> </el-table-column>
+            <el-table-column prop="address" align="center"> </el-table-column>
+            <el-table-column prop="name" align="center" width="200">
+            </el-table-column>
+          </el-table>
+        </vue-seamless-scroll>
+      </div>
     </div>
     <p class="custom-num2" @click="toggle">
       <span>切换</span>
@@ -97,6 +106,20 @@ export default {
       ],
       isShow: false,
     };
+  },
+  computed: {
+    seamlessScrollOption() {
+      return {
+        step: 0.2, // 数值越大速度滚动越快
+        limitMoveNum: 2, // 开始无缝滚动的数据量 this.dataList.length
+        hoverStop: true, // 是否开启鼠标悬停stop
+        direction: 1, // 0向下 1向上 2向左 3向右
+        openWatch: true, // 开启数据实时监控刷新dom
+        singleHeight: 0, // 单步运动停止的高度(默认值0是无缝不停止的滚动) direction => 0/1
+        singleWidth: 0, // 单步运动停止的宽度(默认值0是无缝不停止的滚动) direction => 2/3
+        waitTime: 1000, // 单步运动停止的时间(默认值1000ms)
+      };
+    },
   },
   mounted() {
     this.init();
@@ -490,12 +513,12 @@ export default {
       position: absolute;
       right: 2rem;
       top: -0.695rem;
-      width: 12rem;
+      width: 14rem;
       .box-item {
         text-align: center;
         border: 0.0625rem solid #4faeff;
         padding: 0rem 0.705rem;
-        font-size: 0.875rem;
+        font-size: 0.775rem;
         background-image: -webkit-linear-gradient(#fff, #4faeff);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -505,6 +528,24 @@ export default {
       width: 22.875rem;
       height: 2.9704vh;
       background: url(../assets/home/titleBg9.png) no-repeat center/100% 100%;
+    }
+    .table-box {
+      height: 150px;
+      overflow: hidden;
+      position: relative;
+      .top-box {
+        display: flex;
+        padding: 0 35px;
+        justify-content: space-between;
+        background-color: #03060a;
+        position: absolute;
+        color: #4faeff;
+        width: 80%;
+        z-index: 10;
+      }
+    }
+    /deep/ .el-table__header-wrapper {
+      height: 0;
     }
     /deep/ .el-table {
       background: transparent;

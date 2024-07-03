@@ -5,6 +5,10 @@
         <p>垃圾点位</p>
         <p>11个</p>
       </div>
+      <div class="count-item">
+        <p>投放率</p>
+        <p>99%</p>
+      </div>
       <el-button
         type="primary"
         style="background-color: transparent"
@@ -31,33 +35,20 @@
     <div class="draw-info">
       <div class="title"></div>
       <div class="draw-info-item">
-        <el-steps direction="vertical" :active="1">
-          <el-step
-            :title="day"
-            description="凤起都市花园1点位其他垃圾通溢出"
-            status="wait"
-          ></el-step>
-          <el-step
-            :title="day"
-            description="凤起都市花园3点位有害垃圾通溢出"
-            status="wait"
-          ></el-step>
-          <el-step
-            :title="day"
-            description="凤起都市花园3点位厨余垃圾通溢出"
-            status="wait"
-          ></el-step>
-          <el-step
-            :title="day"
-            description="王马社区5点位余垃圾通溢出"
-            status="wait"
-          ></el-step>
-          <el-step
-            :title="day"
-            description="王马社区2点位余垃圾通溢出"
-            status="wait"
-          ></el-step>
-        </el-steps>
+        <vue-seamless-scroll
+          :data="markList"
+          :class-option="seamlessScrollOption"
+        >
+          <el-steps direction="vertical">
+            <el-step
+              :title="day"
+              :description="item.description"
+              status="wait"
+              v-for="(item, i) in markList"
+              :key="i"
+            ></el-step>
+          </el-steps>
+        </vue-seamless-scroll>
       </div>
     </div>
     <el-dialog :visible.sync="showDialog">
@@ -75,11 +66,42 @@ export default {
       chart: null,
       day: null,
       showDialog: false,
+      markList: [
+        {
+          description: "凤起都市花园1点位其他垃圾通溢出",
+        },
+        {
+          description: "凤起都市花园3点位有害垃圾通溢出",
+        },
+        {
+          description: "凤起都市花园3点位厨余垃圾通溢出",
+        },
+        {
+          description: "王马社区5点位余垃圾通溢出",
+        },
+        {
+          description: "王马社区2点位余垃圾通溢出",
+        },
+      ],
     };
   },
   mounted() {
     this.init();
     this.day = formatDate(new Date()).month;
+  },
+  computed: {
+    seamlessScrollOption() {
+      return {
+        step: 0.2, // 数值越大速度滚动越快
+        limitMoveNum: 2, // 开始无缝滚动的数据量 this.dataList.length
+        hoverStop: true, // 是否开启鼠标悬停stop
+        direction: 1, // 0向下 1向上 2向左 3向右
+        openWatch: true, // 开启数据实时监控刷新dom
+        singleHeight: 0, // 单步运动停止的高度(默认值0是无缝不停止的滚动) direction => 0/1
+        singleWidth: 0, // 单步运动停止的宽度(默认值0是无缝不停止的滚动) direction => 2/3
+        waitTime: 1000, // 单步运动停止的时间(默认值1000ms)
+      };
+    },
   },
   methods: {
     init() {
@@ -206,7 +228,7 @@ export default {
       margin: 1.25rem 0;
       height: 16.3704vh;
       width: 18.75rem;
-      overflow: auto;
+      overflow: hidden;
       //样式穿透
       /deep/ .el-step__title {
         font-size: 0.675rem;
