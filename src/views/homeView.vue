@@ -8,9 +8,9 @@
           <p>多云</p>
           <p>23 ~ 34℃</p>
         </div>
-        <div class="title1"><p>星火·智治</p></div>
+        <div class="title1"><p>星火·安居</p></div>
         <div class="title2"><p>星火·智治</p></div>
-        <div class="title3"><p>星火·安居</p></div>
+        <div class="title3"><p>星火·智治</p></div>
         <div class="title4"><p>星火·模型</p></div>
         <div class="times">
           <p>{{ today.day }}</p>
