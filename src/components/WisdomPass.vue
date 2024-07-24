@@ -88,7 +88,7 @@ export default {};
     .video-box {
       flex: 0.48;
       .video {
-        height: 9.2593vh;
+        height: 100.0004px;
         background: url("../assets/home/temp1.png") no-repeat center/100% 100%;
       }
       .text {
@@ -110,32 +110,32 @@ export default {};
       align-items: center;
       background: url("../assets/home/bg2.png") no-repeat center/100% 100%;
       width: 10.95rem;
-      height: 6.0778vh;
+      height: 65.6402px;
 
       .info-item-icon1 {
         background: url("../assets/home/car-inter.png") no-repeat;
         width: 2.875rem;
-        height: 3.7963vh;
+        height: 41px;
       }
       .info-item-icon2 {
         background: url("../assets/home/car-time.png") no-repeat;
         width: 2.675rem;
-        height: 3.7963vh;
+        height: 41px;
       }
       .info-item-icon3 {
         background: url("../assets/home/car-p.png") no-repeat;
         width: 2.675rem;
-        height: 3.7963vh;
+        height: 41px;
       }
       .info-item-icon3 {
         background: url("../assets/home/car-p.png") no-repeat;
         width: 2.675rem;
-        height: 3.7963vh;
+        height: 41px;
       }
       .info-item-icon4 {
         background: url("../assets/home/people.png") no-repeat;
         width: 2.675rem;
-        height: 5vh;
+        height: 54px;
       }
       .info-item-content {
         .text {

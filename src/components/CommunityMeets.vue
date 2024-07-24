@@ -285,7 +285,7 @@ export default {
         });
       }
       //(第二个参数可以设置你这个环形的高低程度)
-      const boxHeight = this.getHeight3D(series, 64); //通过传参设定3d饼/环的高度
+      const boxHeight = this.getHeight3D(series, 50); //通过传参设定3d饼/环的高度
       // 准备待返回的配置项，把准备好的 legendData、series 传入。
 
       this.option = {
@@ -305,7 +305,7 @@ export default {
           ],
           //图例列表的布局朝向。
           orient: "vertical",
-          right: 20,
+          right: "0rem",
           bottom: 20,
           //图例文字每项之间的间隔
           itemGap: 5,
@@ -315,7 +315,7 @@ export default {
           itemWidth: 10,
           textStyle: {
             //图例字体大小
-            fontSize: 12,
+            fontSize: ".75rem",
             color: "#B8DDFF",
             lineHeight: 20,
           },
@@ -351,9 +351,9 @@ export default {
                 this.option.series[params.seriesIndex].pieData.value;
               return (
                 "<div style='color:rgba(214, 243, 255, 0.9);'>" +
-                `<span style="display:inline-block;margin-right:5px;border-radius:10px;width:10px;height:10px;background-color:${params.color};"></span>` +
+                `<span style="display:inline-block;margin-right:.3125rem;border-radius:.625rem;width:.625rem;height:.625rem;background-color:${params.color};"></span>` +
                 `${params.seriesName}<br/>` +
-                `<span style='margin-right:20px'>${value}</span>` +
+                `<span style='margin-right:1.25rem'>${value}</span>` +
                 `<span >${bfb}%</span>` +
                 "</div>"
               );
@@ -381,7 +381,7 @@ export default {
           left: 0,
           top: 0,
           // right: 120,
-          width: 200,
+          width: "292.5rem",
           viewControl: {
             //3d效果可以放大、旋转等，请自己去查看官方配置
             alpha: 30, //角度(这个很重要 调节角度 上下)
@@ -502,40 +502,40 @@ export default {
   .chat-info {
     position: relative;
     .people-drawd {
-      margin-top: 1.05rem;
-      height: 16.9481vh;
-      width: 21.75rem;
+      margin-top: 16.8px;
+      height: 11.44rem;
+      width: 348px;
     }
     .box {
       display: flex;
       align-items: center;
       justify-content: space-around;
       position: absolute;
-      right: 2rem;
-      top: -0.695rem;
-      width: 14rem;
+      right: 32px;
+      top: -11.12px;
+      width: 224px;
       .box-item {
         text-align: center;
-        border: 0.0625rem solid #4faeff;
-        padding: 0rem 0.705rem;
-        font-size: 0.775rem;
+        border: 1px solid #4faeff;
+        padding: 0px 11.28px;
+        font-size: 12.4px;
         background-image: -webkit-linear-gradient(#fff, #4faeff);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
     }
     .title {
-      width: 22.875rem;
-      height: 2.9704vh;
+      width: 366px;
+      height: 2.005rem;
       background: url(../assets/home/titleBg9.png) no-repeat center/100% 100%;
     }
     .table-box {
-      height: 150px;
+      height: 8.1rem;
       overflow: hidden;
       position: relative;
       .top-box {
         display: flex;
-        padding: 0 35px;
+        padding: 0 2.1875rem;
         justify-content: space-between;
         background-color: #03060a;
         position: absolute;
@@ -549,30 +549,30 @@ export default {
     }
     /deep/ .el-table {
       background: transparent;
-      width: 400px !important;
+      width: 25rem !important;
     }
     /deep/ .el-table__body {
       width: 100% !important;
     }
     // /deep/ .el-table__header {
-    //   width: 500px !important;
+    //   width: 31.25rem !important;
     // }
     /deep/ .el-table__body-wrapper {
-      width: 410px !important;
+      width: 25.625rem !important;
     }
     /deep/ .el-table .el-table__cell {
       padding: 0;
     }
     /deep/ .el-table tr {
       background: transparent;
-      font-size: 14px;
-      width: 520px !important;
+      font-size: 0.875rem;
+      width: 32.5rem !important;
     }
     /deep/ .el-table tr:hover {
       background: transparent;
     }
     /deep/ .el-table tr td {
-      height: 2.7778vh !important;
+      height: 30.0002px !important;
       color: #e2e2e3;
     }
     /deep/ .el-table .cell {
@@ -585,7 +585,7 @@ export default {
     }
     /deep/ .el-table th.el-table__cell {
       background: transparent;
-      padding: 0.1852vh 0;
+      padding: 2.0002px 0;
       border: none;
     }
     /deep/ .el-table th.el-table__cell .cell {
@@ -609,9 +609,9 @@ export default {
   }
   .custom-num2 {
     position: absolute;
-    top: -52px;
-    right: 31px;
-    width: 130px;
+    top: -3.25rem;
+    right: 1.9375rem;
+    width: 8.125rem;
     text-align: center;
     background-image: -webkit-linear-gradient(#fff, #4faeff);
     -webkit-background-clip: text;
@@ -622,9 +622,9 @@ export default {
     align-items: center;
     span {
       cursor: pointer;
-      padding: 1px 4px;
-      width: 50px;
-      border: 2px solid #27527c;
+      padding: 0.0625rem 0.25rem;
+      width: 3.125rem;
+      border: 0.125rem solid #27527c;
     }
   }
 }

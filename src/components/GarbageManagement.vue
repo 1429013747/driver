@@ -172,15 +172,15 @@ export default {
   .count {
     display: flex;
     justify-content: space-around;
-    margin: 0 0.9259vh;
+    margin: 0 9.9997px;
     .count-item {
-      border: 0.1852vh solid #2d5180;
-      padding: 0vh 2.4074vh;
+      border: 2.0002px solid #2d5180;
+      padding: 0px 25.9999px;
       & p:first-child {
-        margin-bottom: 0.3704vh;
+        margin-bottom: 4.0003px;
       }
       p {
-        font-size: 1.2963vh;
+        font-size: 14px;
         font-weight: 600;
         background-image: -webkit-linear-gradient(#fff, #4faeff);
         -webkit-background-clip: text;
@@ -196,7 +196,7 @@ export default {
       position: relative;
       .chart {
         width: 10.1875rem;
-        height: 15.5185vh;
+        height: 167.5998px;
         background: url(../assets/home/chartBg.png) no-repeat center center;
         background-size: 10.375rem 9.125rem;
       }
@@ -231,7 +231,7 @@ export default {
     }
     .draw-info-item {
       margin: 1.25rem 0;
-      height: 16.3704vh;
+      height: 176.8003px;
       width: 18.75rem;
       overflow: hidden;
       //样式穿透
@@ -253,7 +253,7 @@ export default {
     .video {
       background: url(@/assets/home/temp1.png) no-repeat center/100% 100%;
       width: 920px;
-      height: 60vh;
+      height: 648px;
     }
   }
 }

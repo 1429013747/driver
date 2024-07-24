@@ -43,21 +43,44 @@
                 <p class="icon"></p>
                 <div>
                   <p>楼道屏总数</p>
-                  <p class="num">35</p>
+                  <p class="num">20</p>
                 </div>
               </div>
               <div class="flow-item temp">
                 <p class="icon2"></p>
                 <div>
                   <p>楼道屏在线数</p>
-                  <p class="num">33</p>
+                  <p class="num">20</p>
                 </div>
               </div>
               <div class="flow-item temp2">
                 <p class="icon3"></p>
                 <div>
                   <p>楼道屏离线数</p>
-                  <p class="num">2</p>
+                  <p class="num">0</p>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="flow-item">
+                <p class="icon"></p>
+                <div>
+                  <p>王马社区</p>
+                  <p class="num">100%</p>
+                </div>
+              </div>
+              <div class="flow-item temp">
+                <p class="icon2"></p>
+                <div>
+                  <p>凤起都市花园</p>
+                  <p class="num">0%</p>
+                </div>
+              </div>
+              <div class="flow-item temp2">
+                <p class="icon3"></p>
+                <div>
+                  <p>东清大厦</p>
+                  <p class="num">0%</p>
                 </div>
               </div>
             </div>
@@ -169,14 +192,13 @@ export default {
 .container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 1080px;
   color: #ffffff;
   background: url(../assets/home/bg.png) no-repeat center/100% 100%;
   .header {
     display: flex;
     justify-content: space-between;
-    height: 9.067vh;
-    width: 120rem;
+    height: 97.9236px;
     background: url(../assets/home/header.png) no-repeat center/100% 100%;
     .header-info {
       display: flex;
@@ -185,8 +207,8 @@ export default {
       width: 100%;
       .address {
         width: 6.75rem;
-        height: 4.06vh;
-        line-height: 4.06vh;
+        height: 43.848px;
+        line-height: 43.848px;
 
         padding-right: 0.8rem;
         background: url(../assets/home/position.png) no-repeat center/100% 100%;
@@ -202,7 +224,7 @@ export default {
         }
         .img {
           width: 2.5rem;
-          height: 3.7037vh;
+          height: 40px;
           background: url(../assets/home/yun.png) no-repeat center center;
         }
       }
@@ -248,12 +270,12 @@ export default {
         background: url(../assets/home/active-shape.png) no-repeat center/100%
           100%;
         width: 10.5rem;
-        height: 7.8704vh;
+        height: 85.0003px;
         p {
           font-weight: bold;
           font-size: 1rem;
           text-align: center;
-          line-height: 7.3815vh;
+          line-height: 79.7202px;
           color: #ffffff;
           box-shadow: 0 0.125rem 0.0625rem 0 #00000052;
           transform: rotate(-7deg);
@@ -266,13 +288,13 @@ export default {
 
         background: url(../assets/home/shape4.png) no-repeat center/100% 100%;
         width: 9.9375rem;
-        height: 7.5389vh;
+        height: 81.4201px;
         p {
           font-weight: bold;
           opacity: 0.5;
           font-size: 1rem;
           text-align: center;
-          line-height: 6.9667vh;
+          line-height: 75.2404px;
           box-shadow: 0 0.125rem 0.0625rem 0 #00000052;
           transform: rotate(-5deg);
         }
@@ -302,7 +324,7 @@ export default {
   }
   .main {
     display: flex;
-    margin: 0 1.5625rem;
+    margin: 0 2.2625rem;
     justify-content: space-between;
     position: relative;
     .content-left {
@@ -311,30 +333,30 @@ export default {
       width: 23.575rem;
       overflow: hidden;
       justify-content: space-between;
-      height: 88vh;
+      height: 950.4px;
       .title {
         width: 22.875rem;
-        height: 4.6296vh;
+        height: 49.9997px;
         background: url(../assets/home/titleBg.png) no-repeat center/100% 100%;
       }
       .title2 {
         width: 22.875rem;
         margin-top: 0.3rem;
-        height: 4.6296vh;
+        height: 49.9997px;
         background: url(../assets/home/titleBg2.png) no-repeat center/100% 100%;
       }
       .title3 {
         width: 22.875rem;
         margin-top: 0.3rem;
-        height: 4.6296vh;
+        height: 49.9997px;
         background: url(../assets/home/titleBg3.png) no-repeat center/100% 100%;
       }
     }
     .content-center {
       .iframe {
         width: 64.8125rem;
-        height: 67vh;
-        margin-bottom: 0.9259vh;
+        height: 691.2px;
+        margin-bottom: 9.9997px;
         iframe {
           width: 100%;
           height: 100%;
@@ -342,12 +364,13 @@ export default {
       }
       .title {
         width: 64.8125rem;
-        height: 4.5296vh;
+        height: 48.9197px;
         background: url(../assets/home/titleBg4.png) no-repeat center/100% 100%;
       }
       .flow-num {
         display: flex;
-
+        justify-content: space-between;
+        margin-top: 8px;
         .flow-item {
           display: flex;
           width: 11.4375rem;
@@ -407,7 +430,7 @@ export default {
           margin-left: 1.23rem;
           background: #416ba14b;
           margin-top: 0.225rem;
-          width: 45.9375rem;
+          width: 35.1rem;
           padding: 0.425rem 2rem;
           .flow-info-item {
             display: flex;
@@ -435,7 +458,7 @@ export default {
               text-align: left;
               color: #ffffff;
               letter-spacing: 0.1875rem;
-              width: 35.9375rem;
+              width: 27rem;
               white-space: nowrap;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -448,19 +471,19 @@ export default {
       width: 26rem;
       .title {
         width: 24.875rem;
-        height: 3.6296vh;
+        height: 39.1997px;
         background: url(../assets/home/titleBg5.png) no-repeat center/100% 100%;
       }
       .title2 {
         width: 24.875rem;
-        height: 3.6296vh;
+        height: 39.1997px;
         background: url(../assets/home/titleBg8.png) no-repeat center/100% 100%;
       }
     }
     .position {
       position: absolute;
       width: 130px;
-      height: 11.8519vh;
+      height: 128.0005px;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);

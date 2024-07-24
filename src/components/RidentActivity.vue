@@ -174,10 +174,11 @@ export default {
         },
         legend: {
           orient: "vertical",
-          right: "18",
+          right: "1.125rem",
           top: "center",
           textStyle: {
             color: "#fff",
+            fontSize: ".8125rem",
           },
         },
 
@@ -185,8 +186,8 @@ export default {
           {
             data: this.dataChart,
             type: "pie",
-            radius: ["0%", "60%"],
-            center: ["35%", "50%"],
+            radius: ["0%", "59%"],
+            center: ["28%", "50%"],
             labelLine: {
               show: false,
             },
@@ -223,6 +224,7 @@ export default {
           top: "center",
           textStyle: {
             color: "#fff",
+            fontSize: ".8125rem",
           },
         },
 
@@ -230,8 +232,8 @@ export default {
           {
             data: this.dataChart2,
             type: "pie",
-            radius: ["0%", "60%"],
-            center: ["28%", "50%"],
+            radius: ["0%", "59%"],
+            center: ["25%", "50%"],
             labelLine: {
               show: false,
             },
@@ -260,7 +262,7 @@ export default {
 
     .rident-item {
       width: 6.875rem;
-      height: 4.7407vh;
+      height: 51.1996px;
       border: 0.125rem solid #27527c;
       display: flex;
       flex-direction: column;
@@ -273,7 +275,7 @@ export default {
     }
   }
   .custom {
-    height: 2.963vh;
+    height: 32.0004px;
     margin: 8px 0;
     background: url(../assets/home2/bg3.png) no-repeat center/100% 100%;
     display: flex;
@@ -283,20 +285,20 @@ export default {
       .custom-num {
         width: 130px;
         text-align: right;
-        line-height: 2.963vh;
+        line-height: 32.0004px;
         background-image: -webkit-linear-gradient(#fff, #4faeff);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
     }
     .custom-num {
-        width: 130px;
-        text-align: right;
-        line-height: 2.963vh;
-        background-image: -webkit-linear-gradient(#fff, #4faeff);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
+      width: 130px;
+      text-align: right;
+      line-height: 32.0004px;
+      background-image: -webkit-linear-gradient(#fff, #4faeff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
     .custom-num2 {
       position: absolute;
       right: 0;
@@ -330,7 +332,7 @@ export default {
 
     .customChart {
       width: 11.375rem;
-      height: 13.4259vh;
+      height: 144.9997px;
     }
   }
 }

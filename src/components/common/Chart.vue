@@ -76,7 +76,7 @@ export default {
           },
 
           //设置饼图在容器中的位置(目前没发现啥用)
-          //   center: ['50%', '100%']
+          // center: ["50%", "100%"],
         };
 
         //曲面的颜色、不透明度等样式。
@@ -92,7 +92,6 @@ export default {
         }
         series.push(seriesItem);
       }
-
       // 使用上一次遍历时，计算出的数据和 sumValue，调用 getParametricEquation 函数，
       // 向每个 series-surface 传入不同的参数方程 series-surface.parametricEquation，也就是实现每一个扇形。
       legendData = [];
@@ -143,17 +142,17 @@ export default {
               ],
               //图例列表的布局朝向。
               orient: "vertical",
-              right: 20,
-              bottom: 50,
+              right: "1.25rem",
+              bottom: "26.125rem",
               //图例文字每项之间的间隔W
               itemGap: 0,
               show: true,
               icon: "rect",
-              itemHeight: 10,
-              itemWidth: 10,
+              itemHeight: 8,
+              itemWidth: 8,
               textStyle: {
                 //图例字体大小
-                fontSize: 12,
+                fontSize: ".65rem",
                 color: "#B8DDFF",
                 lineHeight: 20,
               },
@@ -196,6 +195,7 @@ export default {
             }
           },
         },
+        // center:[this.options.center[0],this.options.center[1]],
         //这个可以变形
         xAxis3D: {
           min: -1,

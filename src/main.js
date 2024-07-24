@@ -9,6 +9,8 @@ import ElementUI from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";
 Vue.use(ElementUI);
 
+import "./utils/rem.js"; //在main.js中引入rem.js
+
 Vue.config.productionTip = false;
 
 new Vue({

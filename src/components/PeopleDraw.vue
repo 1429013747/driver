@@ -111,7 +111,7 @@ export default {
           },
 
           //设置饼图在容器中的位置(目前没发现啥用)
-          //   center: ['50%', '100%']
+          // center: ["50%", "100%"],
         };
 
         //曲面的颜色、不透明度等样式。
@@ -176,8 +176,8 @@ export default {
           ],
           //图例列表的布局朝向。
           orient: "vertical",
-          right: 20,
-          bottom: 40,
+          right: 0,
+          bottom: "40px",
           //图例文字每项之间的间隔
           itemGap: 5,
           show: true,
@@ -186,7 +186,7 @@ export default {
           itemWidth: 10,
           textStyle: {
             //图例字体大小
-            fontSize: 12,
+            fontSize: ".75rem",
             color: "#B8DDFF",
             lineHeight: 20,
           },
@@ -377,13 +377,14 @@ export default {
       font-size: 0.75rem;
       color: #a4bddd;
       border: 0.0938rem solid #044a91;
+      cursor: pointer;
       &:first-child {
         margin-left: 2.98rem;
       }
     }
   }
   .people-drawd {
-    height: 13.1481vh;
+    height: 141.9995px;
     width: 20rem;
   }
   .box {
