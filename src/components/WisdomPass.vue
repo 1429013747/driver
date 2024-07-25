@@ -116,26 +116,26 @@ export default {};
         background: url("../assets/home/car-inter.png") no-repeat;
         width: 2.875rem;
         height: 41px;
+        margin-right: 4px;
       }
       .info-item-icon2 {
         background: url("../assets/home/car-time.png") no-repeat;
         width: 2.675rem;
         height: 41px;
+        margin-right: 4px;
       }
       .info-item-icon3 {
         background: url("../assets/home/car-p.png") no-repeat;
         width: 2.675rem;
         height: 41px;
+        margin-right: 4px;
       }
-      .info-item-icon3 {
-        background: url("../assets/home/car-p.png") no-repeat;
-        width: 2.675rem;
-        height: 41px;
-      }
+
       .info-item-icon4 {
         background: url("../assets/home/people.png") no-repeat;
         width: 2.675rem;
         height: 54px;
+        margin-right: 4px;
       }
       .info-item-content {
         .text {

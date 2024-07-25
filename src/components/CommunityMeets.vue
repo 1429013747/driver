@@ -1,5 +1,8 @@
 <template>
   <div class="comunity-contaienr">
+    <p class="custom-num2" @click="toggle">
+      <span>切换</span>
+    </p>
     <div class="chat-info">
       <div class="people-drawd" ref="chart"></div>
       <div class="box">
@@ -28,15 +31,11 @@
           <el-table :data="tableData">
             <el-table-column prop="date" align="center"> </el-table-column>
             <el-table-column prop="address" align="center"> </el-table-column>
-            <el-table-column prop="name" align="center" width="200">
-            </el-table-column>
+            <el-table-column prop="name" align="center"> </el-table-column>
           </el-table>
         </vue-seamless-scroll>
       </div>
     </div>
-    <p class="custom-num2" @click="toggle">
-      <span>切换</span>
-    </p>
   </div>
 </template>
 
@@ -322,7 +321,7 @@ export default {
 
           //格式化图例文本
           formatter: function (name) {
-            console.log(name, "name");
+            // console.log(name, "name");
             var target, rate;
             for (var i = 0, l = pieData.length; i < l; i++) {
               if (pieData[i].name == name) {
@@ -381,7 +380,7 @@ export default {
           left: 0,
           top: 0,
           // right: 120,
-          width: "292.5rem",
+          width: "60%",
           viewControl: {
             //3d效果可以放大、旋转等，请自己去查看官方配置
             alpha: 30, //角度(这个很重要 调节角度 上下)

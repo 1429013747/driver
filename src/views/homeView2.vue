@@ -13,9 +13,9 @@
         <div class="title3"><p>星火·安居</p></div>
         <div class="title4"><p>星火·模型</p></div>
         <div class="times">
-          <p>2024-01-19</p>
-          <p>星期四</p>
-          <p class="time-detailed">13:53:20</p>
+          <p>{{ today.day }}</p>
+          <p>{{ today.week }}</p>
+          <p class="time-detailed">{{ today.time }}</p>
         </div>
       </div>
     </div>
@@ -263,7 +263,7 @@
         <div class="title"></div>
         <div class="title2">
           <p class="text">幼儿人脸录入总数</p>
-          <p class="text2">286<span style="font-size: 0.9375rem">人</span></p>
+          <p class="text2">286<span style="font-size: 15px">人</span></p>
         </div>
         <div class="title-bg">
           <p class="index">家长查询信息数据</p>
@@ -276,7 +276,7 @@
         <div class="chart2" ref="chart2"></div>
         <div class="title2">
           <p class="text">摄像头总个数</p>
-          <p class="text2">108<span style="font-size: 0.9375rem">个</span></p>
+          <p class="text2">108<span style="font-size: 15px">个</span></p>
         </div>
 
         <div class="title-bg">
@@ -329,6 +329,8 @@
 
 <script>
 import Chart from "@/components/common/Chart.vue";
+
+import { formatDate } from "@/utils/common.js";
 
 import * as echarts from "echarts";
 import Hls from "hls.js";
@@ -409,7 +411,7 @@ export default {
             value: 27,
           },
         ],
-        width: "300px",
+        width: "18.75rem",
         legend: false,
         height: "9.18rem",
         chartHeight: 40,
@@ -487,9 +489,25 @@ export default {
         data: [150, 230, 224, 218, 135, 147, 260],
         name: "月度",
       },
+      today: {
+        day: "",
+        week: "",
+        time: "",
+      },
     };
   },
   mounted() {
+    const temp = formatDate(new Date()); // 获取时间
+    this.today.day = temp.day;
+    this.today.time = temp.dateTime;
+    this.today.week = temp.week;
+
+    this.timer = setInterval(() => {
+      const temp = formatDate(new Date()); // 获取时间
+      this.today.day = temp.day;
+      this.today.time = temp.dateTime;
+      this.today.week = temp.week;
+    }, 1000);
     this.init();
 
     this.init2();
@@ -521,14 +539,14 @@ export default {
           name: "月度",
         };
       } else {
-        const day = new Date().getDate();
+        const day = new Date().getDate() - 1;
         const arrDay = [];
         for (let i = day; i > day - 7; i--) {
-          arrDay.unshift(i + "日");
+          arrDay.push(i + "日");
         }
         this.dataList = {
           xAxis: arrDay,
-          data: [50, 90, 74, 48, 55, 57, 130],
+          data: [80, 90, 74, 48, 35, 57, 30],
           name: "日度",
         };
       }
@@ -548,6 +566,12 @@ export default {
         tooltip: {
           show: true,
           formatter: "<div>{a}</div><div>{b}： {c} 度</div>",
+          backgroundColor: "rgba(18, 55, 85, 0.8);",
+          borderColor: "transparent",
+
+          textStyle: {
+            color: "#fff",
+          },
         },
         xAxis: {
           type: "category",
@@ -610,6 +634,12 @@ export default {
           trigger: "axis",
           formatter: "<p>{a}</p><p>周{b}： {c} 步</p>",
           position: ["30%", "-50%"],
+          backgroundColor: "rgba(18, 55, 85, 0.8);",
+          borderColor: "transparent",
+
+          textStyle: {
+            color: "#fff",
+          },
         },
         color: ["#3aa0ff"],
         xAxis: {
@@ -665,7 +695,7 @@ export default {
       const options = {
         legend: {
           top: "center",
-          right: "1.8125rem",
+          right: "29px",
           orient: "vertical",
           textStyle: {
             color: "#fff",
@@ -720,6 +750,12 @@ export default {
         tooltip: {
           trigger: "axis",
           formatter: "<p>周{b}： {c} 次</p>",
+          backgroundColor: "rgba(18, 55, 85, 0.8);",
+          borderColor: "transparent",
+
+          textStyle: {
+            color: "#fff",
+          },
         },
         xAxis: {
           type: "category",
@@ -782,6 +818,11 @@ export default {
         tooltip: {
           trigger: "axis",
           formatter: "<p>周{b}： {c} 条</p>",
+          backgroundColor: "rgba(18, 55, 85, 0.8);",
+          borderColor: "transparent",
+          textStyle: {
+            color: "#fff",
+          },
         },
         xAxis: {
           type: "category",
@@ -837,7 +878,7 @@ export default {
 .container {
   display: flex;
   flex-direction: column;
-  height: 1080px;
+  height: 67.5rem;
   color: #ffffff;
   background: url(../assets/home/bg.png) no-repeat center/100% 100%;
   .header {
@@ -846,18 +887,18 @@ export default {
     background: url(../assets/home/header.png) no-repeat center/100% 100%;
     .header-info {
       display: flex;
-      margin: 29px 38px 10px 38px;
+      margin: 2.8125rem 2.375rem 0.625rem 2.375rem;
       position: relative;
       width: 100%;
       .address {
-        width: 108px;
-        height: 43.848px;
-        line-height: 43.848px;
+        width: 6.75rem;
+        height: 2.7405rem;
+        line-height: 2.7405rem;
 
-        padding-right: 12.8px;
+        padding-right: 0.8rem;
         background: url(../assets/home/position.png) no-repeat center/100% 100%;
         font-weight: bold;
-        font-size: 18px;
+        font-size: 1.125rem;
         text-align: right;
       }
       .weather {
@@ -867,132 +908,132 @@ export default {
           margin: 0;
         }
         .img {
-          width: 40px;
-          height: 40px;
+          width: 2.5rem;
+          height: 2.5rem;
           background: url(../assets/home/yun.png) no-repeat center center;
         }
       }
       .title1 {
         position: absolute;
-        top: -24px;
-        left: 377.6px;
+        top: -2.5rem;
+        left: 23.6rem;
         background: url(../assets/home/shape1.png) no-repeat center/100% 100%;
-        width: 168px;
-        height: 81px;
+        width: 10.5rem;
+        height: 5.0625rem;
         p {
           font-weight: bold;
           opacity: 0.5;
-          font-size: 16px;
+          font-size: 1rem;
           text-align: center;
-          line-height: 75px;
-          box-shadow: 0 2px 1px 0 #00000052;
+          line-height: 4.6875rem;
+          box-shadow: 0 0.125rem 0.0625rem 0 #00000052;
           transform: rotate(5deg);
         }
       }
       .title2 {
         position: absolute;
-        top: -16px;
-        left: 496px;
+        top: -2rem;
+        left: 31rem;
         background: url(../assets/home/shape2.png) no-repeat center/100% 100%;
-        width: 168px;
-        height: 85px;
+        width: 10.5rem;
+        height: 5.3125rem;
         p {
           font-weight: bold;
           opacity: 0.5;
-          font-size: 16px;
+          font-size: 1rem;
           text-align: center;
-          padding-right: 16px;
-          line-height: 80.2px;
-          box-shadow: 0 2px 1px 0 #00000052;
+          padding-right: 1rem;
+          line-height: 5.0125rem;
+          box-shadow: 0 0.125rem 0.0625rem 0 #00000052;
           transform: rotate(5deg);
         }
       }
       .title3 {
         position: absolute;
 
-        top: -17.6px;
-        right: 496px;
+        top: -2.1rem;
+        right: 31rem;
         background: url(../assets/home/active-shape.png) no-repeat center/100%
           100%;
-        width: 168px;
-        height: 85px;
+        width: 10.5rem;
+        height: 5.3125rem;
         p {
           font-weight: bold;
-          font-size: 16px;
+          font-size: 1rem;
           text-align: center;
-          line-height: 79.72px;
+          line-height: 4.9825rem;
           color: #ffffff;
-          box-shadow: 0 2px 1px 0 #00000052;
+          box-shadow: 0 0.125rem 0.0625rem 0 #00000052;
           transform: rotate(-7deg);
         }
       }
       .title4 {
         position: absolute;
-        top: -24px;
-        right: 382.4px;
+        top: -2.5rem;
+        right: 23.9rem;
 
         background: url(../assets/home/shape4.png) no-repeat center/100% 100%;
-        width: 159px;
-        height: 81.4208px;
+        width: 9.9375rem;
+        height: 5.0888rem;
         p {
           font-weight: bold;
           opacity: 0.5;
-          font-size: 16px;
+          font-size: 1rem;
           text-align: center;
-          line-height: 75.24px;
-          box-shadow: 0 2px 1px 0 #00000052;
+          line-height: 4.7025rem;
+          box-shadow: 0 0.125rem 0.0625rem 0 #00000052;
           transform: rotate(-5deg);
         }
       }
       .times {
         position: absolute;
         right: 0;
-        top: 6.88px;
-        width: 288px;
+        top: 0.43rem;
+        width: 18rem;
         display: flex;
         justify-content: space-between;
         align-items: center;
         p {
-          font-size: 16px;
+          font-size: 1rem;
           text-align: left;
           color: #bfdcf4;
         }
         .time-detailed {
           font-weight: bold;
-          font-size: 20px;
+          font-size: 1.25rem;
           text-align: left;
           color: #ffffff;
-          letter-spacing: 2px;
+          letter-spacing: 0.125rem;
         }
       }
     }
   }
   .main {
     display: flex;
-    margin: 0 41px;
+    margin: 0 2.5625rem;
     justify-content: space-between;
     position: relative;
     .content-left {
       display: flex;
       flex-direction: column;
-      width: 382px;
+      width: 23.875rem;
       align-items: center;
       overflow: hidden;
-      // height: 59.4rem;
+      // height: 950.4px;
       .title {
-        width: 366px;
-        height: 3.125rem;
+        width: 22.875rem;
+        height: 50px;
         background: url(../assets/home2/titleBg1.png) no-repeat center/100% 100%;
       }
       .old-count {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        width: 339px;
-        height: 4.0625rem;
+        width: 21.1875rem;
+        height: 65px;
         background: url(../assets/home2/old.png) no-repeat center/100% 100%;
         .old-info {
-          width: 162px;
+          width: 10.125rem;
           text-align: right;
         }
         p {
@@ -1002,7 +1043,7 @@ export default {
           -webkit-text-fill-color: transparent;
         }
         .count {
-          font-size: 20px;
+          font-size: 1.25rem;
         }
       }
       .title2 {
@@ -1010,17 +1051,17 @@ export default {
 
         justify-content: space-between;
         align-items: center;
-        width: 345px;
-        height: 1.9375rem;
+        width: 21.5625rem;
+        height: 31px;
         background: url(../assets/home2/titleBg2.png) no-repeat center/100% 100%;
-        margin-bottom: 6px;
+        margin-bottom: 0.375rem;
         .index {
           font-weight: bold;
-          font-size: 14px;
+          font-size: 0.875rem;
           text-align: left;
-          width: 136px;
-          line-height: 1.9375rem;
-          padding-left: 3.125rem;
+          width: 8.5rem;
+          line-height: 31px;
+          padding-left: 50px;
           background-image: -webkit-linear-gradient(#fff, #4faeff);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
@@ -1029,16 +1070,16 @@ export default {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          margin-right: 20px;
+          margin-right: 1.25rem;
           p {
-            font-size: 14px;
+            font-size: 0.875rem;
             background: url(../assets/home2/bg.png) no-repeat center/100% 100%;
             background-image: -webkit-linear-gradient(#bdadad, #848b92);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            border: 0.0625rem solid #4faeff;
-            padding: 0.0625rem 0.3125rem;
-            margin-left: 0.625rem;
+            border: 1px solid #4faeff;
+            padding: 1px 5px;
+            margin-left: 10px;
             cursor: pointer;
             .active {
               background-image: -webkit-linear-gradient(#ffffff, #1d90f5);
@@ -1049,43 +1090,43 @@ export default {
         }
       }
       .customChart {
-        margin: 0.25rem 0;
-        width: 342px;
-        height: 7.0375rem;
+        margin: 4px 0;
+        width: 21.375rem;
+        height: 112.6px;
       }
       .info {
         display: flex;
-        margin: 0.625rem 0rem;
+        margin: 10px 0px;
         .info-item {
           display: flex;
           align-items: center;
           text-align: left;
-          width: 10rem;
-          margin-right: 0.375rem;
-          height: 3.125rem;
+          width: 160px;
+          margin-right: 6px;
+          height: 50px;
           background: url(../assets/home2/bg1.png) no-repeat center/100% 100%;
           .icon {
-            width: 3.125rem;
-            height: 3.125rem;
+            width: 50px;
+            height: 50px;
             background: url(../assets/home2/icon.png) no-repeat center/100% 100%;
           }
           .icon1 {
-            width: 3.125rem;
-            height: 3.125rem;
+            width: 50px;
+            height: 50px;
             background: url(../assets/home2/icon1.png) no-repeat center/100%
               100%;
           }
           .text {
-            font-size: 0.875rem;
+            font-size: 14px;
             text-align: left;
             color: #98c7f3;
-            letter-spacing: 0.1875rem;
+            letter-spacing: 3px;
           }
           .text2 {
-            font-size: 1.125rem;
+            font-size: 18px;
             text-align: left;
             font-weight: bold;
-            letter-spacing: 0.1875rem;
+            letter-spacing: 3px;
             background-image: -webkit-linear-gradient(#fff, #4faeff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -1093,16 +1134,16 @@ export default {
         }
       }
       .chart-t {
-        margin-top: 0.375rem;
+        margin-top: 6px;
         position: relative;
         z-index: 20;
         .bottomBg {
-          width: 9.0625rem;
-          height: 4.725rem;
+          width: 145px;
+          height: 75.6px;
           background: url(../assets/home2/bottom.png) no-repeat center/100% 100%;
           position: absolute;
-          top: 55px;
-          left: 3.4px;
+          top: 3.2rem;
+          left: 0.1rem;
           z-index: -1;
         }
         .circle {
@@ -1111,29 +1152,29 @@ export default {
           justify-content: center;
           align-items: center;
           position: absolute;
-          width: 4.375rem;
-          height: 4.375rem;
-          top: 0rem;
-          left: 2.5rem;
-          border-radius: 2.5rem;
-          box-shadow: inset 0 0 0.625rem 0.0625rem rgba(255, 255, 255, 0.5);
+          width: 70px;
+          height: 70px;
+          top: 0px;
+          left: 40px;
+          border-radius: 40px;
+          box-shadow: inset 0 0 10px 1px rgba(255, 255, 255, 0.5);
           .text1 {
             font-weight: 700;
-            font-size: 0.75rem;
+            font-size: 12px;
             white-space: nowrap;
           }
           .text2 {
             font-weight: 700;
-            font-size: 1.25rem;
+            font-size: 20px;
             text-align: center;
-            letter-spacing: 0.25rem;
+            letter-spacing: 4px;
           }
         }
       }
       .view-info {
         display: flex;
         width: 88%;
-        margin: 0 1.875rem 0.625rem 1.875rem;
+        margin: 0 30px 10px 30px;
         justify-content: space-between;
         .view-info-item {
           display: flex;
@@ -1141,72 +1182,72 @@ export default {
           justify-content: center;
           align-content: center;
           text-align: center;
-          border: 0.0938rem solid #284772;
-          width: 6.5625rem;
-          height: 3rem;
+          border: 1.5008px solid #284772;
+          width: 105px;
+          height: 48px;
           background-image: -webkit-linear-gradient(#fff, #4faeff);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           .text {
-            font-size: 0.875rem;
-            letter-spacing: 0.1875rem;
+            font-size: 14px;
+            letter-spacing: 3px;
           }
           .text2 {
-            font-size: 1.125rem;
+            font-size: 18px;
             font-weight: bold;
           }
         }
       }
       .chart11 {
-        width: 10rem;
-        height: 6.15rem;
+        width: 160px;
+        height: 98.4px;
       }
       .health {
         display: flex;
         justify-content: space-between;
-        margin: 0 1.875rem;
+        margin: 0 30px;
         width: 88%;
         .health-item {
           // background-image: -webkit-linear-gradient(#fff, #4faeff);
           // -webkit-background-clip: text;
           // -webkit-text-fill-color: transparent;
           .title {
-            margin-bottom: 0.375rem;
-            height: 2.0625rem;
+            margin-bottom: 6px;
+            height: 33px;
             background: url(../assets/home2/bg2.png) no-repeat center/100% 100%;
             font-weight: bold;
-            font-size: 14px;
+            font-size: 0.875rem;
             text-align: left;
-            width: 112px;
-            line-height: 1.9375rem;
-            padding-left: 50px;
+            width: 7rem;
+            line-height: 31px;
+            padding-left: 3.125rem;
           }
 
           .info {
             display: flex;
             justify-content: center;
             justify-content: space-between;
-            margin: 0.27rem;
+            margin: 4.32px;
             .icon {
-              width: 1.25rem;
-              height: 1.25rem;
+              width: 20px;
+              height: 20px;
               background: url(../assets/home2/call.png) no-repeat center/100%
                 100%;
             }
             .icon1 {
-              width: 1.25rem;
-              height: 1.25rem;
+              width: 20px;
+              height: 20px;
               background: url(../assets/home2/email.png) no-repeat center/100%
                 100%;
             }
             .icon2 {
-              width: 1.25rem;
-              height: 1.25rem;
+              width: 20px;
+              height: 20px;
               background: url(../assets/home2/tip.png) no-repeat center/100%
                 100%;
             }
             .num {
-              font-size: 1.125rem;
+              font-size: 18px;
               font-weight: bold;
             }
           }
@@ -1216,19 +1257,19 @@ export default {
     .content-center {
       overflow: hidden;
       .iframe {
-        width: 1037px;
-        height: 45rem;
-        margin-bottom: 0.625rem;
+        width: 64.8125rem;
+        height: 704px;
+        margin-bottom: 10px;
         iframe {
           width: 100%;
           height: 100%;
         }
       }
       .title {
-        width: 64.4375rem;
-        height: 2.75rem;
+        width: 1031px;
+        height: 44px;
         background: url(../assets/home2/titleBg3.png) no-repeat center/100% 100%;
-        margin-bottom: 0.375rem;
+        margin-bottom: 6px;
       }
       .center-item {
         display: flex;
@@ -1238,20 +1279,21 @@ export default {
           display: flex;
           justify-content: space-between;
           .title-item {
-            width: 11.25rem;
+            width: 180px;
             height: 33px;
-            margin-right: 0.375rem;
+            margin-right: 6px;
             background: url(../assets/home2/bg3.png) no-repeat left/cover;
 
             .text2 {
               line-height: 33px;
-              padding-left: 2.25rem;
+              padding-left: 46px;
               .text-num {
-                padding-left: 0.25rem;
-                line-height: 34.08px;
+                padding-left: 4px;
+                line-height: 34x;
                 background-image: -webkit-linear-gradient(#fff, #4faeff);
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
+                font-size: 13px;
               }
             }
           }
@@ -1259,64 +1301,64 @@ export default {
             background-image: -webkit-linear-gradient(#fff, #4faeff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            padding: 0.25rem 1.5625rem;
-            margin: 0 0.9375rem;
+            padding: 4px 25px;
+            margin: 0 15px;
             font-weight: bold;
-            font-size: 0.875rem;
-            border-bottom: 0.0625rem solid #284772;
-            height: 22px;
+            font-size: 14px;
+            border-bottom: 1px solid #284772;
+            height: 1.375rem;
           }
           .content-item:nth-of-type(2)::before {
             // 添加一个方块
             display: inline-block;
             content: "";
-            width: 0.625rem;
-            margin-right: 0.25rem;
-            height: 0.625rem;
+            width: 10px;
+            margin-right: 4px;
+            height: 10px;
             background: rgb(83, 226, 92);
           }
           .content-item:nth-of-type(3)::before {
             // 添加一个方块
             display: inline-block;
             content: "";
-            width: 0.625rem;
-            margin-right: 0.25rem;
-            height: 0.625rem;
+            width: 10px;
+            margin-right: 4px;
+            height: 10px;
             background: rgb(26, 190, 205);
           }
           .content-item:nth-of-type(4)::before {
             // 添加一个方块
             display: inline-block;
             content: "";
-            width: 0.625rem;
-            margin-right: 0.25rem;
-            height: 0.625rem;
+            width: 10px;
+            margin-right: 4px;
+            height: 10px;
             background: rgb(243, 186, 0);
           }
           .content-item:nth-of-type(5)::before {
             // 添加一个方块
             display: inline-block;
             content: "";
-            width: 0.625rem;
-            margin-right: 0.25rem;
-            height: 0.625rem;
+            width: 10px;
+            margin-right: 4px;
+            height: 10px;
             background: rgb(182, 210, 25);
           }
         }
         .title-item {
-          width: 20.1875rem;
-          height: 33px;
+          width: 323px;
+          height: 2.0625rem;
           background: url(../assets/home2/bg3.png) no-repeat center/100% 100%;
 
           .text {
-            width: 9rem;
-            line-height: 33px;
+            width: 144px;
+            line-height: 2.0625rem;
             text-align: right;
           }
           .text2 {
-            width: 9rem;
-            line-height: 33px;
-            padding-left: 3rem;
+            width: 144px;
+            line-height: 2.0625rem;
+            padding-left: 48px;
           }
         }
         .chart-info {
@@ -1325,32 +1367,32 @@ export default {
             position: absolute;
             z-index: 2;
             right: 0;
-            top: 10px;
+            top: 0.625rem;
             .type {
               display: flex;
               align-items: center;
-              margin-bottom: 0.25rem;
-              width: 11rem;
-              padding-right: 0.625rem;
-              height: 53px;
+              margin-bottom: 4px;
+              width: 176px;
+              padding-right: 10px;
+              height: 3.3125rem;
               background: url(../assets/home2/bg4.png) no-repeat center/100%
                 100%;
               p {
-                width: 9.75rem;
+                width: 156px;
                 text-align: right;
                 background-image: -webkit-linear-gradient(#fff, #4faeff);
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
               }
               .text {
-                font-size: 1.25rem;
+                font-size: 20px;
                 font-weight: bold;
               }
             }
           }
           .chart {
-            width: 20.1875rem;
-            height: 152.4px;
+            width: 323px;
+            height: 9.525rem;
           }
         }
         .content-info {
@@ -1361,8 +1403,8 @@ export default {
             flex-direction: column;
             justify-content: center;
             align-items: flex-end;
-            width: 9.0625rem;
-            height: 57px;
+            width: 145px;
+            height: 3.5625rem;
             background: url(../assets/home2/icon2.png) no-repeat center/100%
               100%;
           }
@@ -1371,8 +1413,8 @@ export default {
             flex-direction: column;
             justify-content: center;
             align-items: flex-end;
-            width: 9.0625rem;
-            height: 57px;
+            width: 145px;
+            height: 3.5625rem;
             background: url(../assets/home2/icon3.png) no-repeat center/100%
               100%;
           }
@@ -1381,14 +1423,14 @@ export default {
             flex-direction: column;
             justify-content: center;
             align-items: flex-end;
-            width: 9.0625rem;
-            height: 57px;
+            width: 145px;
+            height: 3.5625rem;
             background: url(../assets/home2/icon4.png) no-repeat center/100%
               100%;
           }
           p {
-            font-size: 0.875rem;
-            width: 5.625rem;
+            font-size: 14px;
+            width: 90px;
             font-weight: bold;
             background-image: -webkit-linear-gradient(#fff, #4faeff);
             -webkit-background-clip: text;
@@ -1406,27 +1448,27 @@ export default {
       align-items: center;
       overflow: hidden;
       .title {
-        width: 22.875rem;
-        height: 43px;
+        width: 366px;
+        height: 2.6875rem;
         background: url(../assets/home2/titleBg4.png) no-repeat center/100% 100%;
       }
       .title2 {
-        width: 21.1875rem;
-        height: 54px;
+        width: 339px;
+        height: 3.375rem;
         background: url(../assets/home2/titleBg5.png) no-repeat center/100% 100%;
         display: flex;
         align-items: center;
         text-align: center;
         justify-content: space-between;
         .text {
-          margin-left: 4.375rem;
+          margin-left: 70px;
           font-weight: bold;
           background-image: -webkit-linear-gradient(#fff, #4faeff);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
         }
         .text2 {
-          font-size: 1.25rem;
+          font-size: 20px;
           font-weight: bold;
           background-image: -webkit-linear-gradient(#fff, #4faeff);
           -webkit-background-clip: text;
@@ -1438,30 +1480,30 @@ export default {
 
         justify-content: space-between;
         align-items: center;
-        width: 345px;
-        margin-bottom: 4.32px;
-        height: 31px;
+        width: 21.5625rem;
+        margin-bottom: 0.27rem;
+        height: 1.9375rem;
         background: url(../assets/home2/titleBg2.png) no-repeat center/100% 100%;
         .index {
           font-weight: bold;
-          font-size: 14px;
+          font-size: 0.875rem;
           text-align: left;
-          width: 136px;
-          line-height: 31px;
-          padding-left: 3.125rem;
+          width: 8.5rem;
+          line-height: 1.9375rem;
+          padding-left: 50px;
           background-image: -webkit-linear-gradient(#fff, #4faeff);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
         }
       }
       .bg {
-        width: 20.3125rem;
-        height: 32px;
+        width: 325px;
+        height: 2rem;
         background: url(../assets/home2/bg5.png) no-repeat center/100% 100%;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 0 0.625rem;
+        padding: 0 10px;
         font-weight: bold;
         p {
           background-image: -webkit-linear-gradient(#fff, #4faeff);
@@ -1470,20 +1512,20 @@ export default {
         }
       }
       .chart2 {
-        width: 342px;
-        height: 112.6px;
+        width: 21.375rem;
+        height: 7.0375rem;
       }
       .chart {
-        margin-top: 0.375rem;
+        margin-top: 6px;
         position: relative;
         z-index: 20;
         .bottomBg {
-          width: 9.0625rem;
-          height: 75.6px;
+          width: 145px;
+          height: 4.725rem;
           background: url(../assets/home2/bottom.png) no-repeat center/100% 100%;
           position: absolute;
-          top: 50px;
-          left: 5px;
+          top: 3rem;
+          left: 0.15rem;
           z-index: -1;
         }
         .circle {
@@ -1492,20 +1534,20 @@ export default {
           justify-content: center;
           align-items: center;
           position: absolute;
-          width: 4.375rem;
-          height: 4.375rem;
-          top: 0rem;
-          left: 40px;
-          border-radius: 2.5rem;
-          box-shadow: inset 0 0 0.625rem 0.0625rem rgba(255, 255, 255, 0.5);
+          width: 70px;
+          height: 70px;
+          top: 0px;
+          left: 2.5rem;
+          border-radius: 40px;
+          box-shadow: inset 0 0 10px 1px rgba(255, 255, 255, 0.5);
           .text1 {
             font-weight: 700;
-            font-size: 0.75rem;
+            font-size: 12px;
             white-space: nowrap;
           }
           .text2 {
             font-weight: 700;
-            font-size: 1.125rem;
+            font-size: 18px;
             text-align: center;
           }
         }
@@ -1518,8 +1560,8 @@ export default {
           .video {
             mix-blend-mode: screen;
             display: block;
-            height: 75.6px;
-            width: 190px;
+            height: 4.725rem;
+            width: 11.875rem;
             // background: url("../assets/home2/video.png") no-repeat center/100%
             //   100%;
             //全屏按钮
@@ -1560,27 +1602,27 @@ export default {
           }
           .text {
             text-align: center;
-            font-size: 0.75rem;
+            font-size: 12px;
             color: #fff;
-            margin-top: 3.68px;
+            margin-top: 0.23rem;
           }
         }
       }
       .title-p {
-        width: 22.875rem;
-        height: 43px;
+        width: 366px;
+        height: 2.6875rem;
         background: url(../assets/home2/titleBg6.png) no-repeat center/100% 100%;
-        margin-bottom: 2.7968px;
+        margin-bottom: 0.1748rem;
       }
       .chart3 {
-        width: 342px;
-        height: 112.6px;
+        width: 21.375rem;
+        height: 7.0375rem;
       }
     }
     .position {
       position: absolute;
-      width: 8.125rem;
-      height: 128px;
+      width: 130px;
+      height: 8rem;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);

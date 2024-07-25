@@ -1,10 +1,30 @@
 <template>
   <div class="people-container">
     <div class="content">
-      <p>房屋类型</p>
-      <p>人口类型</p>
-      <p>年龄分布</p>
-      <p>性别分布</p>
+      <p
+        :class="{ active: text === '人口分布' }"
+        @click="changeTab('人口分布')"
+      >
+        人口分布
+      </p>
+      <p
+        :class="{ active: text === '户籍分布' }"
+        @click="changeTab('户籍分布')"
+      >
+        户籍分布
+      </p>
+      <p
+        :class="{ active: text === '年龄分布' }"
+        @click="changeTab('年龄分布')"
+      >
+        年龄分布
+      </p>
+      <p
+        :class="{ active: text === '性别分布' }"
+        @click="changeTab('性别分布')"
+      >
+        性别分布
+      </p>
     </div>
     <div class="box">
       <div class="people-drawd" ref="chart"></div>
@@ -31,44 +51,123 @@ export default {
   data() {
     return {
       option: {},
+      pieData: [
+        {
+          name: "常住人口", //名称
+          value: 11866, //值
+          rate: "97%",
+          itemStyle: {
+            color: "#0161e6", //半透明
+          },
+        },
+        {
+          name: "流动人口",
+          value: 367,
+          rate: "3%",
+          itemStyle: {
+            color: "#1fb4c3",
+          },
+        },
+      ],
+      text: "人口分布",
     };
   },
   mounted() {
     this.init();
   },
   methods: {
+    changeTab(val) {
+      const typeObj = {
+        人口分布: [
+          {
+            name: "常住人口", //名称
+            value: 11866, //值
+            rate: "97%",
+            itemStyle: {
+              color: "#0161e6", //半透明
+            },
+          },
+          {
+            name: "流动人口",
+            value: 367,
+            rate: "3%",
+            itemStyle: {
+              color: "#1fb4c3",
+            },
+          },
+        ],
+        户籍分布: [
+          {
+            name: "户籍人口", //名称
+            value: 11866, //值
+            rate: "97%",
+            itemStyle: {
+              color: "#0161e6", //半透明
+            },
+          },
+          {
+            name: "外籍人口",
+            value: 367,
+            rate: "3%",
+            itemStyle: {
+              color: "#1fb4c3",
+            },
+          },
+        ],
+        // 年龄分布: [
+        //   {
+        //     name: "18岁以下", //名称
+        //     value: 421, //值
+        //     rate: "32%",
+        //     itemStyle: {
+        //       color: "#0161e6", //半透明
+        //     },
+        //   },
+        //   {
+        //     name: "18-30岁",
+        //     value: 1500,
+        //     rate: "53%",
+        //     itemStyle: {
+        //       color: "#1fb4c3",
+        //     },
+        //   },
+        //   {
+        //     name: "30岁以上",
+        //     value: 200,
+        //     rate: "14%",
+        //     itemStyle: {
+        //       color: "#d8be11",
+        //     },
+        //   },
+        // ],
+        // 性别分布: [
+        //   {
+        //     name: "男性", //名称
+        //     value: 2021, //值
+        //     rate: "67.8%",
+        //     itemStyle: {
+        //       color: "#0161e6", //半透明
+        //     },
+        //   },
+        //   {
+        //     name: "女性",
+        //     value: 1500,
+        //     rate: "32.2%",
+        //     itemStyle: {
+        //       color: "#1fb4c3",
+        //     },
+        //   },
+        // ],
+      };
+      this.text = val;
+      this.pieData = typeObj[val];
+      this.pieData && this.init();
+    },
     init() {
-      const pieData = [
-        {
-          name: "自住", //名称
-          value: 4021, //值
-          rate: "67.8%",
-          itemStyle: {
-            color: "#0161e6", //半透明
-          },
-        },
-        {
-          name: "空置",
-          value: 15,
-          rate: "0.2%",
-          itemStyle: {
-            color: "#1fb4c3",
-          },
-        },
-        {
-          name: "出租",
-          value: 1898,
-          rate: "32%",
-          itemStyle: {
-            color: "#d8be11",
-          },
-        },
-      ];
-
       //初始化echarts
       const myChart = echarts.init(this.$refs.chart);
       //设置图表配置项
-      this.option = this.getPie3D(pieData, 0.8);
+      this.option = this.getPie3D(this.pieData, 0.8);
       //设置图表配置项
       myChart.setOption(this.option);
       window.addEventListener("resize", () => {
@@ -177,7 +276,7 @@ export default {
           //图例列表的布局朝向。
           orient: "vertical",
           right: 0,
-          bottom: "40px",
+          bottom: "center",
           //图例文字每项之间的间隔
           itemGap: 5,
           show: true,
@@ -247,7 +346,7 @@ export default {
         grid3D: {
           show: false,
           boxHeight: boxHeight, //圆环的高度
-          width: "81%",
+          width: "60%",
           //这是饼图的位置
           left: 0,
           top: 0,
@@ -382,10 +481,13 @@ export default {
         margin-left: 2.98rem;
       }
     }
+    .active {
+      color: #4faeff;
+    }
   }
   .people-drawd {
-    height: 141.9995px;
-    width: 20rem;
+    height: 142px;
+    width: 350px;
   }
   .box {
     display: flex;

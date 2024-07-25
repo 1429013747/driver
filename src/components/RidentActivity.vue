@@ -76,11 +76,11 @@ export default {
       dataChart: [
         {
           value: 56,
-          name: "男",
+          name: "男性",
         },
         {
           value: 44,
-          name: "女",
+          name: "女性",
         },
       ],
       dataChart2: [
@@ -111,11 +111,11 @@ export default {
         this.dataChart = [
           {
             value: 56,
-            name: "男",
+            name: "男性",
           },
           {
             value: 44,
-            name: "女",
+            name: "女性",
           },
         ];
         this.dataChart2 = [
@@ -165,17 +165,26 @@ export default {
           left: "center",
           textStyle: {
             color: "#fff",
-            fontSize: "13px",
+            fontSize: ".8125rem",
           },
         },
         color: ["#25a0ff", "#f9b2ba"],
         tooltip: {
           formatter: "{b} : {d}%",
+
+          backgroundColor: "rgba(18, 55, 85, 0.8);",
+          borderColor: "transparent",
+
+          textStyle: {
+            color: "#fff",
+          },
         },
         legend: {
           orient: "vertical",
-          right: "1.125rem",
+          right: "5%",
           top: "center",
+          itemWidth: 10,
+          itemHeight: 10,
           textStyle: {
             color: "#fff",
             fontSize: ".8125rem",
@@ -186,6 +195,7 @@ export default {
           {
             data: this.dataChart,
             type: "pie",
+            hoverAnimation: false,
             radius: ["0%", "59%"],
             center: ["28%", "50%"],
             labelLine: {
@@ -198,7 +208,6 @@ export default {
         ],
       };
       chart.setOption(opitions);
-
       window.addEventListener("resize", () => {
         chart.resize();
       });
@@ -211,17 +220,25 @@ export default {
           left: "center",
           textStyle: {
             color: "#fff",
-            fontSize: "13px",
+            fontSize: ".8125rem",
           },
         },
         color: ["#016dff", "#fedf14", "#1b98a5"],
         tooltip: {
           formatter: "{b} : {d}%",
+          backgroundColor: "rgba(18, 55, 85, 0.8);",
+          borderColor: "transparent",
+
+          textStyle: {
+            color: "#fff",
+          },
         },
         legend: {
           orient: "vertical",
-          right: "right",
+          right: "5%",
           top: "center",
+          itemWidth: 10,
+          itemHeight: 10,
           textStyle: {
             color: "#fff",
             fontSize: ".8125rem",
@@ -232,6 +249,7 @@ export default {
           {
             data: this.dataChart2,
             type: "pie",
+            hoverAnimation: false,
             radius: ["0%", "59%"],
             center: ["25%", "50%"],
             labelLine: {
@@ -280,6 +298,7 @@ export default {
     background: url(../assets/home2/bg3.png) no-repeat center/100% 100%;
     display: flex;
     position: relative;
+    align-items: center;
     .box {
       display: flex;
       .custom-num {
@@ -331,8 +350,8 @@ export default {
     margin-top: 8px;
 
     .customChart {
-      width: 11.375rem;
-      height: 144.9997px;
+      width: 182px;
+      height: 145px;
     }
   }
 }

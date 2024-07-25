@@ -34,8 +34,12 @@ export default {
       const myChart = echarts.init(this.$refs.chart);
       //设置图表配置项
       this.option = this.getPie3D(pieData, 0.8);
-      //设置图表配置项
-      myChart.setOption(this.option);
+      // 设置图表配置项
+      try {
+        myChart.setOption(this.option);
+      } catch (error) {
+        console.error("Failed to set chart option:", error);
+      }
       window.addEventListener("resize", () => {
         myChart.resize();
       });

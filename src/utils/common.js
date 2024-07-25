@@ -1,47 +1,32 @@
 // 标准时间转换
 export const formatDate = (time) => {
+  const week = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"];
   const datetime = new Date(time);
   const year = datetime.getFullYear();
-  const month = datetime.getMonth();
+  const month = datetime.getMonth() + 1;
   const date = datetime.getDate();
   const hour = datetime.getHours();
   const minute = datetime.getMinutes();
   const second = datetime.getSeconds();
   const result1 =
-    // year +
-    // "-" +
-    // (month + 1 >= 10 ? month + 1 : "0" + (month + 1)) +
-    // "-" +
-    // (date + 1 < 10 ? "0" + date : date) +
-    " " +
-    (hour + 1 < 10 ? "0" + hour : hour) +
+    hour.toString().padStart(2, "0") +
     ":" +
-    (minute + 1 < 10 ? "0" + minute : minute) +
+    minute.toString().padStart(2, "0") +
     ":" +
-    (second + 1 < 10 ? "0" + second : second);
+    second.toString().padStart(2, "0");
 
-  const result2 =
-    year +
-      "-" +
-      (month + 1 >= 10 ? month + 1 : "0" + (month + 1)) +
-      "-" +
-      date +
-      1 <
-    10
-      ? "0" + date
-      : date;
+  const result2 = datetime.getDay();
   const result3 =
     year +
     "-" +
-    (month + 1 >= 10 ? month + 1 : "0" + (month + 1)) +
+    month.toString().padStart(2, "0") +
     "-" +
-    (date + 1 < 10 ? "0" + date : date);
+    date.toString().padStart(2, "0");
 
-  const week = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"];
   const result = {
     dateTime: result1,
-    date: week[result2],
-    month: result3,
+    week: week[result2],
+    day: result3,
   };
   return result;
 };

@@ -63,21 +63,21 @@
             </div>
             <div>
               <div class="flow-item">
-                <p class="icon"></p>
+                <!-- <p class="icon"></p> -->
                 <div>
                   <p>王马社区</p>
                   <p class="num">100%</p>
                 </div>
               </div>
               <div class="flow-item temp">
-                <p class="icon2"></p>
+                <!-- <p class="icon2"></p> -->
                 <div>
                   <p>凤起都市花园</p>
                   <p class="num">0%</p>
                 </div>
               </div>
               <div class="flow-item temp2">
-                <p class="icon3"></p>
+                <!-- <p class="icon3"></p> -->
                 <div>
                   <p>东清大厦</p>
                   <p class="num">0%</p>
@@ -170,15 +170,15 @@ export default {
   },
   mounted() {
     const temp = formatDate(new Date()); // 获取时间
-    this.today.day = temp.month;
+    this.today.day = temp.day;
     this.today.time = temp.dateTime;
-    this.today.week = temp.date;
+    this.today.week = temp.week;
 
     this.timer = setInterval(() => {
       const temp = formatDate(new Date()); // 获取时间
-      this.today.day = temp.month;
+      this.today.day = temp.day;
       this.today.time = temp.dateTime;
-      this.today.week = temp.date;
+      this.today.week = temp.week;
     }, 1000);
   },
   methods: {},
@@ -202,7 +202,7 @@ export default {
     background: url(../assets/home/header.png) no-repeat center/100% 100%;
     .header-info {
       display: flex;
-      margin: 1.825rem 2.375rem;
+      margin: 2.825rem 2.375rem;
       position: relative;
       width: 100%;
       .address {
@@ -219,6 +219,7 @@ export default {
       .weather {
         display: flex;
         align-items: center;
+        margin-top: 26px;
         p {
           margin: 0;
         }
@@ -230,7 +231,7 @@ export default {
       }
       .title1 {
         position: absolute;
-        top: -1.5rem;
+        top: -2.5rem;
         left: 23.6rem;
         background: url(../assets/home/shape1.png) no-repeat center/100% 100%;
         width: 10.5rem;
@@ -247,7 +248,7 @@ export default {
       }
       .title2 {
         position: absolute;
-        top: -1rem;
+        top: -2rem;
         left: 31rem;
         background: url(../assets/home/shape2.png) no-repeat center/100% 100%;
         width: 10.5rem;
@@ -265,7 +266,7 @@ export default {
       }
       .title3 {
         position: absolute;
-        top: -1.1rem;
+        top: -2.1rem;
         right: 31rem;
         background: url(../assets/home/active-shape.png) no-repeat center/100%
           100%;
@@ -283,7 +284,7 @@ export default {
       }
       .title4 {
         position: absolute;
-        top: -1.5rem;
+        top: -2.5rem;
         right: 23.9rem;
 
         background: url(../assets/home/shape4.png) no-repeat center/100% 100%;
@@ -376,6 +377,7 @@ export default {
           width: 11.4375rem;
           padding: 0.25rem;
           margin-bottom: 0.4rem;
+          box-sizing: border-box;
           background: url(../assets/home/bg5.png) no-repeat center/100% 100%;
           .icon {
             width: 2.5rem;
