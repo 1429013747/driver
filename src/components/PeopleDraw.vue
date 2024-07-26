@@ -2,6 +2,12 @@
   <div class="people-container">
     <div class="content">
       <p
+        :class="{ active: text === '房屋类型' }"
+        @click="changeTab('房屋类型')"
+      >
+        房屋类型
+      </p>
+      <p
         :class="{ active: text === '人口分布' }"
         @click="changeTab('人口分布')"
       >
@@ -18,12 +24,6 @@
         @click="changeTab('年龄分布')"
       >
         年龄分布
-      </p>
-      <p
-        :class="{ active: text === '性别分布' }"
-        @click="changeTab('性别分布')"
-      >
-        性别分布
       </p>
     </div>
     <div class="box">
@@ -53,23 +53,31 @@ export default {
       option: {},
       pieData: [
         {
-          name: "常住人口", //名称
-          value: 11866, //值
-          rate: "97%",
+          name: "自住", //名称
+          value: 4021, //值
+          rate: "67.8%",
           itemStyle: {
             color: "#0161e6", //半透明
           },
         },
         {
-          name: "流动人口",
-          value: 367,
-          rate: "3%",
+          name: "出租",
+          value: 1898,
+          rate: "32.2%",
           itemStyle: {
             color: "#1fb4c3",
           },
         },
+        {
+          name: "空置",
+          value: 15,
+          rate: "0.2%",
+          itemStyle: {
+            color: "#d8be11",
+          },
+        },
       ],
-      text: "人口分布",
+      text: "房屋类型",
     };
   },
   mounted() {
@@ -78,6 +86,32 @@ export default {
   methods: {
     changeTab(val) {
       const typeObj = {
+        房屋类型: [
+          {
+            name: "自住", //名称
+            value: 4021, //值
+            rate: "67.8%",
+            itemStyle: {
+              color: "#0161e6", //半透明
+            },
+          },
+          {
+            name: "出租",
+            value: 1898,
+            rate: "32.2%",
+            itemStyle: {
+              color: "#1fb4c3",
+            },
+          },
+          {
+            name: "空置",
+            value: 15,
+            rate: "0.2%",
+            itemStyle: {
+              color: "#d8be11",
+            },
+          },
+        ],
         人口分布: [
           {
             name: "常住人口", //名称
@@ -114,6 +148,7 @@ export default {
             },
           },
         ],
+
         // 年龄分布: [
         //   {
         //     name: "18岁以下", //名称
@@ -137,24 +172,6 @@ export default {
         //     rate: "14%",
         //     itemStyle: {
         //       color: "#d8be11",
-        //     },
-        //   },
-        // ],
-        // 性别分布: [
-        //   {
-        //     name: "男性", //名称
-        //     value: 2021, //值
-        //     rate: "67.8%",
-        //     itemStyle: {
-        //       color: "#0161e6", //半透明
-        //     },
-        //   },
-        //   {
-        //     name: "女性",
-        //     value: 1500,
-        //     rate: "32.2%",
-        //     itemStyle: {
-        //       color: "#1fb4c3",
         //     },
         //   },
         // ],
